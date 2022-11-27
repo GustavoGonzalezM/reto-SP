@@ -7,11 +7,11 @@
 
 import UIKit
 
-class MainScreenViewController: UIViewController {
+class MenuScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationItem.setHidesBackButton(true, animated: true)
        
     }
     

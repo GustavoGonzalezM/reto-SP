@@ -29,10 +29,15 @@ class ViewController: UIViewController {
     
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-       
+        
+        print("Touch button Login")
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MenuScreenViewController") as! MenuScreenViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     @IBAction func biometricButtonTapped(_ sender: Any) {
+        
+        print("Touch button Biometric")
         
     }
     
