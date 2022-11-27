@@ -13,6 +13,7 @@
 		84409CD72932C98900486A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84409CD52932C98900486A22 /* Main.storyboard */; };
 		84409CD92932C98B00486A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84409CD82932C98B00486A22 /* Assets.xcassets */; };
 		84409CDC2932C98B00486A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84409CDA2932C98B00486A22 /* LaunchScreen.storyboard */; };
+		84409CE52932EB0600486A22 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84409CE42932EB0600486A22 /* MainScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		84409CD82932C98B00486A22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84409CDB2932C98B00486A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84409CDD2932C98B00486A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84409CE42932EB0600486A22 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,24 @@
 		84409CCE2932C98900486A22 /* RetoSP */ = {
 			isa = PBXGroup;
 			children = (
+				84409CE32932EA6B00486A22 /* ViewControlers */,
 				84409CCF2932C98900486A22 /* AppDelegate.swift */,
 				84409CD12932C98900486A22 /* SceneDelegate.swift */,
-				84409CD32932C98900486A22 /* ViewController.swift */,
 				84409CD52932C98900486A22 /* Main.storyboard */,
 				84409CD82932C98B00486A22 /* Assets.xcassets */,
 				84409CDA2932C98B00486A22 /* LaunchScreen.storyboard */,
 				84409CDD2932C98B00486A22 /* Info.plist */,
 			);
 			path = RetoSP;
+			sourceTree = "<group>";
+		};
+		84409CE32932EA6B00486A22 /* ViewControlers */ = {
+			isa = PBXGroup;
+			children = (
+				84409CD32932C98900486A22 /* ViewController.swift */,
+				84409CE42932EB0600486A22 /* MainScreenViewController.swift */,
+			);
+			path = ViewControlers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84409CD42932C98900486A22 /* ViewController.swift in Sources */,
+				84409CE52932EB0600486A22 /* MainScreenViewController.swift in Sources */,
 				84409CD02932C98900486A22 /* AppDelegate.swift in Sources */,
 				84409CD22932C98900486A22 /* SceneDelegate.swift in Sources */,
 			);
