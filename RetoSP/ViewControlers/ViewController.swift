@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     
+    
     @IBOutlet weak var emailTextField: UITextField!
     
     @IBOutlet weak var passwordTextField: UITextField!
@@ -23,6 +24,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     
@@ -31,10 +33,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func biometricButtonTapped(_ sender: Any) {
+        
     }
     
-    
-
-
 }
 

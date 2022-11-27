@@ -36,18 +36,8 @@
                                     <constraint firstAttribute="height" constant="34" id="Hdk-J8-Yrx"/>
                                 </constraints>
                                 <color key="textColor" name="default"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KNy-ao-aMo">
-                                <rect key="frame" x="77" y="188" width="180" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="2J9-I9-BpU"/>
-                                    <constraint firstAttribute="height" constant="40" id="NnD-ws-o3I"/>
-                                </constraints>
-                                <color key="textColor" name="default"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s4z-YA-JH5">
                                 <rect key="frame" x="47" y="324" width="281" height="40"/>
@@ -82,42 +72,44 @@
                                     <action selector="biometricButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4uE-ST-RNr"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login_Screen" translatesAutoresizingMaskIntoConstraints="NO" id="Bzl-AO-iRu">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
-                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzm-jR-34k" userLabel="Email text Field">
+                                <rect key="frame" x="47" y="189" width="221" height="34"/>
+                                <color key="tintColor" name="default"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="Mtw-HS-nxg"/>
+                                </constraints>
+                                <color key="textColor" name="default"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="5iZ-Mw-Iwx" secondAttribute="trailing" constant="107" id="0pn-kl-iMi"/>
+                            <constraint firstItem="Xzm-jR-34k" firstAttribute="trailing" secondItem="5iZ-Mw-Iwx" secondAttribute="trailing" id="5By-Yx-BJv"/>
+                            <constraint firstItem="Xzm-jR-34k" firstAttribute="leading" secondItem="5iZ-Mw-Iwx" secondAttribute="leading" id="65g-rB-pIv"/>
                             <constraint firstItem="ey3-be-W5w" firstAttribute="top" secondItem="s4z-YA-JH5" secondAttribute="bottom" constant="27" id="6fQ-kR-uGw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Bzl-AO-iRu" secondAttribute="bottom" constant="99" id="EPv-rN-8en"/>
                             <constraint firstItem="ey3-be-W5w" firstAttribute="leading" secondItem="s4z-YA-JH5" secondAttribute="leading" id="GTU-JY-ebs"/>
                             <constraint firstItem="ey3-be-W5w" firstAttribute="trailing" secondItem="s4z-YA-JH5" secondAttribute="trailing" id="I4c-3l-5Ge"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bzl-AO-iRu" secondAttribute="trailing" id="Mcz-ab-IG9"/>
-                            <constraint firstItem="KNy-ao-aMo" firstAttribute="top" secondItem="S6D-u5-ZPw" secondAttribute="bottom" constant="20" id="N3X-QD-9xF"/>
                             <constraint firstItem="S6D-u5-ZPw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="97" id="Ngf-5g-LV0"/>
                             <constraint firstItem="Aax-a7-7Cx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Qbt-b3-Wim"/>
                             <constraint firstItem="S6D-u5-ZPw" firstAttribute="top" secondItem="Aax-a7-7Cx" secondAttribute="bottom" constant="20" id="RsZ-ok-zhS"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ey3-be-W5w" secondAttribute="bottom" constant="236" id="U6A-mX-dhZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="S6D-u5-ZPw" secondAttribute="bottom" constant="499" id="WyJ-hE-9Zw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KNy-ao-aMo" secondAttribute="trailing" id="XIj-ot-CJ8"/>
+                            <constraint firstItem="Xzm-jR-34k" firstAttribute="top" secondItem="S6D-u5-ZPw" secondAttribute="bottom" constant="21" id="Xxd-ep-w7e"/>
                             <constraint firstItem="S6D-u5-ZPw" firstAttribute="centerX" secondItem="Aax-a7-7Cx" secondAttribute="centerX" id="YBY-HC-T2u"/>
                             <constraint firstItem="Aax-a7-7Cx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="83" id="YbJ-kl-cFj"/>
-                            <constraint firstItem="Bzl-AO-iRu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ZZA-mr-GFq"/>
-                            <constraint firstItem="Aax-a7-7Cx" firstAttribute="centerX" secondItem="Bzl-AO-iRu" secondAttribute="centerX" id="aCK-XY-oWU"/>
                             <constraint firstItem="s4z-YA-JH5" firstAttribute="top" secondItem="5iZ-Mw-Iwx" secondAttribute="bottom" constant="45" id="eax-hf-Gm6"/>
                             <constraint firstItem="Aax-a7-7Cx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="gYt-Hh-pxv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s4z-YA-JH5" secondAttribute="trailing" constant="47" id="n6h-ne-N3b"/>
                             <constraint firstItem="s4z-YA-JH5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="uJT-wu-2KF"/>
-                            <constraint firstItem="5iZ-Mw-Iwx" firstAttribute="top" secondItem="KNy-ao-aMo" secondAttribute="bottom" constant="17" id="wNn-7h-hCc"/>
                             <constraint firstItem="ey3-be-W5w" firstAttribute="leading" secondItem="5iZ-Mw-Iwx" secondAttribute="leading" id="yTr-FV-NnH"/>
-                            <constraint firstItem="KNy-ao-aMo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="77" id="yht-b5-k1W"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="biometricButton" destination="ey3-be-W5w" id="zmZ-j8-1dw"/>
-                        <outlet property="emailTextField" destination="KNy-ao-aMo" id="i2r-tm-d4C"/>
+                        <outlet property="emailTextField" destination="Xzm-jR-34k" id="7lD-a1-F8o"/>
                         <outlet property="label" destination="S6D-u5-ZPw" id="Bxx-G5-ZIE"/>
                         <outlet property="loginButton" destination="s4z-YA-JH5" id="4eA-LD-LjC"/>
                         <outlet property="logoImage" destination="Aax-a7-7Cx" id="R2r-om-6g3"/>
@@ -126,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="-74"/>
+            <point key="canvasLocation" x="136.80000000000001" y="-74.212893553223395"/>
         </scene>
         <!--MenuScreenViewController-->
         <scene sceneID="XcR-dO-aRZ">
@@ -154,13 +146,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Login_Screen" width="310" height="547"/>
         <image name="LogoSP" width="208" height="76"/>
         <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="default">
-            <color red="0.47058823529411764" green="0.0" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.47099998593330383" green="0.0" blue="0.99199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
