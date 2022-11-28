@@ -13,6 +13,8 @@ class MenuScreenViewController: UIViewController {
     
     @IBOutlet weak var enviarDocumentosScrollView: UIScrollView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -23,5 +25,12 @@ class MenuScreenViewController: UIViewController {
         self.enviarDocumentosScrollView.layer.cornerRadius = 10.0
         self.enviarDocumentosScrollView.layer.borderColor = UIColor(named: "enviarDocumentos")?.cgColor
         self.enviarDocumentosScrollView.layer.borderWidth = 1.0
+        
+        self.enviarDocumentosScrollView.layer.cornerRadius = 10.0
+        self.enviarDocumentosScrollView.layer.borderColor = UIColor(named: "enviarDocumentos")?.cgColor
+        self.enviarDocumentosScrollView.layer.borderWidth = 1.0
+        
+        
+
     }
 }
