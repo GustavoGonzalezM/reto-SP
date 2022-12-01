@@ -33,8 +33,25 @@ class MenuScreenViewController: UIViewController {
         self.verDocumentosScrollView.layer.borderWidth = 1.0
 
         self.verOficinasScrollView.layer.cornerRadius = 10.0
-        self.verOficinasScrollView.layer.borderColor = UIColor(named: "verOficinas")?.cgColor
+        self.verOficinasScrollView.layer.borderColor = UIColor(named: "oficinas")?.cgColor
         self.verOficinasScrollView.layer.borderWidth = 1.0
 
     }
+    
+    
+    @IBAction func enviarDocumentosTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "EnviarDocumentosSegue", sender: self)
+    }
+    
+    
+    @IBAction func verDocumenosTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "VerDocumentosSegue", sender: self)
+    }
+    
+    
+    
+    @IBAction func verOficinasTapped(_ sender: Any) {
+        self.performSegue(withIdentifier: "VerOficinasSegue", sender: self)
+    }
+    
 }
