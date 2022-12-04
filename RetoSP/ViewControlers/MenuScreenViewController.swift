@@ -17,9 +17,13 @@ class MenuScreenViewController: UIViewController {
     
     @IBOutlet weak var verOficinasScrollView: UIScrollView!
     
+    @IBOutlet weak var userNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        let user = retreiveUserInfo()
+        self.userNameLabel.text = user.nombre
     }
     
     func setupUI(){
@@ -36,6 +40,11 @@ class MenuScreenViewController: UIViewController {
         self.verOficinasScrollView.layer.borderColor = UIColor(named: "oficinas")?.cgColor
         self.verOficinasScrollView.layer.borderWidth = 1.0
 
+    }
+    
+    func retreiveUserInfo() -> User{
+        let user: User? = UserDefaults.standard.retrieveCodable(for: "user")
+        return user!
     }
     
     

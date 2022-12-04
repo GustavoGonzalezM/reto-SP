@@ -45,7 +45,7 @@
                                         </constraints>
                                         <color key="textColor" name="default"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pasword" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="5iZ-Mw-Iwx">
                                         <rect key="frame" x="0.0" y="71" width="280" height="40"/>
@@ -152,10 +152,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXP-Mi-kX5">
-                                <rect key="frame" x="16" y="47.5" width="41.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXP-Mi-kX5">
+                                <rect key="frame" x="16" y="44" width="300" height="35"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" name="default"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0e0-hh-jGu">
@@ -366,6 +366,7 @@
                     <navigationItem key="navigationItem" id="aZu-Cb-qxj"/>
                     <connections>
                         <outlet property="enviarDocumentosScrollView" destination="Wn7-4S-Jf4" id="FFM-B7-Zl2"/>
+                        <outlet property="userNameLabel" destination="PXP-Mi-kX5" id="QTQ-cf-gon"/>
                         <outlet property="verDocumentosScrollView" destination="0e0-hh-jGu" id="nc6-ug-fU9"/>
                         <outlet property="verOficinasScrollView" destination="Zko-iO-qkp" id="SiG-EB-NIv"/>
                         <segue destination="qKB-ac-yl1" kind="show" identifier="EnviarDocumentosSegue" id="oMy-c3-ufF"/>
@@ -396,7 +397,9 @@
                         <viewLayoutGuide key="safeArea" id="8Uv-SB-kpS"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="31g-9I-RMp"/>
+                    <navigationItem key="navigationItem" id="31g-9I-RMp">
+                        <barButtonItem key="backBarButtonItem" title="Regresar" id="XKh-by-u0T"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZl-M9-5hO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
