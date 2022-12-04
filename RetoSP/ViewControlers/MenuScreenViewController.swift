@@ -9,8 +9,6 @@ import UIKit
 
 class MenuScreenViewController: UIViewController {
 
-    @IBOutlet weak var boton1: UIButton!
-    
     @IBOutlet weak var enviarDocumentosScrollView: UIScrollView!
     
     @IBOutlet weak var verDocumentosScrollView: UIScrollView!
@@ -22,11 +20,15 @@ class MenuScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        let user = retreiveUserInfo()
-        self.userNameLabel.text = user.nombre
+        
     }
     
     func setupUI(){
+        let user = retreiveUserInfo()
+        self.userNameLabel.text = user.nombre
+        
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "default")
+        
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.enviarDocumentosScrollView.layer.cornerRadius = 10.0
         self.enviarDocumentosScrollView.layer.borderColor = UIColor(named: "enviarDocumentos")?.cgColor
@@ -39,12 +41,11 @@ class MenuScreenViewController: UIViewController {
         self.verOficinasScrollView.layer.cornerRadius = 10.0
         self.verOficinasScrollView.layer.borderColor = UIColor(named: "oficinas")?.cgColor
         self.verOficinasScrollView.layer.borderWidth = 1.0
-
     }
     
     func retreiveUserInfo() -> User{
         let user: User? = UserDefaults.standard.retrieveCodable(for: "user")
-        return user!
+        return user ?? User(id: nil, nombre: nil, apellido: nil, acceso: false, admin: nil, email: nil)
     }
     
     

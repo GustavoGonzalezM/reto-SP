@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 class ViewController: UIViewController {
     
@@ -24,9 +25,34 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
     }
     
+    func setupUI() {
+        let user = retreiveUserInfo()
+        biometricButton.isEnabled = false
+        if user.acceso {
+            biometricButton.isEnabled = true
+        }
+        
+        self.biometricButton.layer.cornerRadius = 10.0
+        self.biometricButton.layer.borderColor = UIColor(named: "default")?.cgColor
+        self.biometricButton.layer.borderWidth = 1.0
+        
+        self.emailTextField.layer.cornerRadius = 10.0
+        self.emailTextField.layer.borderColor = UIColor(named: "default")?.cgColor
+        self.emailTextField.layer.borderWidth = 1.0
+        
+        self.passwordTextField.layer.cornerRadius = 10.0
+        self.passwordTextField.layer.borderColor = UIColor(named: "default")?.cgColor
+        self.passwordTextField.layer.borderWidth = 1.0
+        
+        let emailTextFieldAttributedText = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "default") ?? Color.gray])
+        self.emailTextField.attributedPlaceholder = emailTextFieldAttributedText
+        
+        let passwordTextFieldAttributedText = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "default") ?? Color.gray])
+        self.passwordTextField.attributedPlaceholder = passwordTextFieldAttributedText
+    }
     var networking = NetworkingProvider()
     
     @IBAction func loginButtonTapped(_ sender: Any) {
@@ -73,6 +99,11 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
         self.present(alert, animated: true)
+    }
+    
+    func retreiveUserInfo() -> User{
+        let user: User? = UserDefaults.standard.retrieveCodable(for: "user")
+        return user ?? User(id: nil, nombre: nil, apellido: nil, acceso: false, admin: nil, email: nil)
     }
 }
 

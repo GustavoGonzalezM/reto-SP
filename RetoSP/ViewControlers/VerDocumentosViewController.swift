@@ -11,7 +11,6 @@ class VerDocumentosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.backButtonTitle = "Regresar"
-
+    
     }
 }
