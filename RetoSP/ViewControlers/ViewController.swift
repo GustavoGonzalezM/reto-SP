@@ -85,8 +85,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction func biometricButtonTapped(_ sender: Any) {
-        
-        print("Touch button Biometric")
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MenuScreenViewController") as! MenuScreenViewController
+        self.navigationController?.pushViewController(viewController, animated: true)
         
     }
     
