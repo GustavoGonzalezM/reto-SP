@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     func setupUI() {
         let user = retreiveUserInfo()
-        biometricButton.isEnabled = false
+        biometricButton.isEnabled = true
         if user.acceso {
             biometricButton.isEnabled = true
         }

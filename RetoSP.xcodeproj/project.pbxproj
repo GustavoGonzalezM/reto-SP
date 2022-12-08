@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,12 +18,14 @@
 		8462DF1C293834BD00B01EB8 /* VerDocumentosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462DF1B293834BD00B01EB8 /* VerDocumentosViewController.swift */; };
 		8462DF1E293834DC00B01EB8 /* VerOficinasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8462DF1D293834DC00B01EB8 /* VerOficinasViewController.swift */; };
 		84BF15B729385A3B001FE995 /* NetworkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF15B629385A3B001FE995 /* NetworkingProvider.swift */; };
-		84BF15BA29385D88001FE995 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 84BF15B929385D88001FE995 /* Alamofire */; };
 		84BF15BE2938614B001FE995 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF15BD2938614B001FE995 /* User.swift */; };
 		84BF15C2293D206B001FE995 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF15C1293D206B001FE995 /* UserDefaults+Extensions.swift */; };
+		CF4119F70439B352EE33BAA7 /* Pods_RetoSP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CEA955E329A0E3DD238C2A0 /* Pods_RetoSP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3CEA955E329A0E3DD238C2A0 /* Pods_RetoSP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RetoSP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AA877331B4AEBF69065D4B8 /* Pods-RetoSP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RetoSP.release.xcconfig"; path = "Target Support Files/Pods-RetoSP/Pods-RetoSP.release.xcconfig"; sourceTree = "<group>"; };
 		84409CCC2932C98900486A22 /* RetoSP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetoSP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84409CCF2932C98900486A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84409CD12932C98900486A22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,7 @@
 		84BF15B629385A3B001FE995 /* NetworkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProvider.swift; sourceTree = "<group>"; };
 		84BF15BD2938614B001FE995 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84BF15C1293D206B001FE995 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		DD7560EA7DB5CFF56BC42BC0 /* Pods-RetoSP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RetoSP.debug.xcconfig"; path = "Target Support Files/Pods-RetoSP/Pods-RetoSP.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,18 +49,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84BF15BA29385D88001FE995 /* Alamofire in Frameworks */,
+				CF4119F70439B352EE33BAA7 /* Pods_RetoSP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6BF01B127E070086E9C2DE3A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DD7560EA7DB5CFF56BC42BC0 /* Pods-RetoSP.debug.xcconfig */,
+				6AA877331B4AEBF69065D4B8 /* Pods-RetoSP.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		84409CC32932C98900486A22 = {
 			isa = PBXGroup;
 			children = (
 				84409CCE2932C98900486A22 /* RetoSP */,
 				84409CCD2932C98900486A22 /* Products */,
+				6BF01B127E070086E9C2DE3A /* Pods */,
+				CBF93735CFA196C90C461A3A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +145,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		CBF93735CFA196C90C461A3A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3CEA955E329A0E3DD238C2A0 /* Pods_RetoSP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,18 +160,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84409CE02932C98B00486A22 /* Build configuration list for PBXNativeTarget "RetoSP" */;
 			buildPhases = (
+				6B806899118B00BC6501555C /* [CP] Check Pods Manifest.lock */,
 				84409CC82932C98900486A22 /* Sources */,
 				84409CC92932C98900486A22 /* Frameworks */,
 				84409CCA2932C98900486A22 /* Resources */,
+				9BD925E707B752E7E9173BAE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = RetoSP;
-			packageProductDependencies = (
-				84BF15B929385D88001FE995 /* Alamofire */,
-			);
 			productName = RetoSP;
 			productReference = 84409CCC2932C98900486A22 /* RetoSP.app */;
 			productType = "com.apple.product-type.application";
@@ -169,7 +191,7 @@
 				};
 			};
 			buildConfigurationList = 84409CC72932C98900486A22 /* Build configuration list for PBXProject "RetoSP" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -177,9 +199,6 @@
 				Base,
 			);
 			mainGroup = 84409CC32932C98900486A22;
-			packageReferences = (
-				84BF15B829385D88001FE995 /* XCRemoteSwiftPackageReference "Alamofire" */,
-			);
 			productRefGroup = 84409CCD2932C98900486A22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -201,6 +220,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6B806899118B00BC6501555C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RetoSP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BD925E707B752E7E9173BAE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RetoSP/Pods-RetoSP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RetoSP/Pods-RetoSP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RetoSP/Pods-RetoSP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84409CC82932C98900486A22 /* Sources */ = {
@@ -292,7 +353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -346,7 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -358,6 +419,7 @@
 		};
 		84409CE12932C98B00486A22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD7560EA7DB5CFF56BC42BC0 /* Pods-RetoSP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -370,6 +432,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -385,6 +448,7 @@
 		};
 		84409CE22932C98B00486A22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AA877331B4AEBF69065D4B8 /* Pods-RetoSP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -397,6 +461,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,25 +497,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		84BF15B829385D88001FE995 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		84BF15B929385D88001FE995 /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 84BF15B829385D88001FE995 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 84409CC42932C98900486A22 /* Project object */;
 }

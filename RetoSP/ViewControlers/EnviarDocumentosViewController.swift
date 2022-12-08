@@ -6,24 +6,55 @@
 //
 
 import UIKit
+import DropDown
 
 class EnviarDocumentosViewController: UIViewController {
 
+    @IBOutlet weak var selectDocument: UIView!
+    let menu: DropDown = {
+        let menu = DropDown()
+        menu.dataSource = [
+        "Cédula",
+        "Cédula de extranjería",
+        "Pasaporte",
+        "Tarjeta de identidad"
+        ]
+        
+        return menu
+    }()
+    
+    
+    @IBOutlet weak var tipoDeDocumentoLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        selectDocument.setOnClickListener {
+            self.menu.show()
+        }
+        menu.anchorView = selectDocument
+        menu.selectionAction = { _, seleccionado in
+            self.tipoDeDocumentoLabel.text = seleccionado
+        }
     }
     
+}
 
-    /*
-    // MARK: - Navigation
+class ClickListener: UITapGestureRecognizer {
+    var onClick : (() -> Void)? = nil
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension UIView {
+    
+    func setOnClickListener(action :@escaping () -> Void){
+        let tapRecogniser = ClickListener(target: self, action: #selector(onViewClicked(sender:)))
+        tapRecogniser.onClick = action
+        self.addGestureRecognizer(tapRecogniser)
     }
-    */
-
+     
+    @objc func onViewClicked(sender: ClickListener) {
+        if let onClick = sender.onClick {
+            onClick()
+        }
+    }
+     
 }
