@@ -230,7 +230,7 @@
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn7-4S-Jf4">
-                                <rect key="frame" x="16" y="324" width="343" height="84"/>
+                                <rect key="frame" x="16" y="324" width="343" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Enviar documentos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6A-5F-TlV">
                                         <rect key="frame" x="55" y="0.0" width="142" height="37"/>
@@ -251,7 +251,7 @@
                                         </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feD-NU-cSf" userLabel="Boton Enviar Doc">
-                                        <rect key="frame" x="211" y="42" width="122" height="34"/>
+                                        <rect key="frame" x="211" y="42" width="122" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="Rjl-8B-yli"/>
                                         </constraints>
@@ -282,6 +282,7 @@
                                     <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="bottom" secondItem="feD-NU-cSf" secondAttribute="bottom" constant="8" id="bve-5Q-NZp"/>
                                     <constraint firstItem="feD-NU-cSf" firstAttribute="bottom" secondItem="Wn7-4S-Jf4" secondAttribute="bottomMargin" id="hWT-y9-61F"/>
                                     <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="trailing" secondItem="feD-NU-cSf" secondAttribute="trailing" constant="10" id="ihA-VM-Sck"/>
+                                    <constraint firstAttribute="height" constant="80" id="k8m-QB-JVu"/>
                                     <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="trailing" secondItem="m6A-5F-TlV" secondAttribute="trailing" constant="146" id="nUJ-g6-cDK"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="3Ra-EC-a7w"/>
