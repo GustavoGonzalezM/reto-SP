@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  RetoSP
 //
-//  Created by Usuario on 26/11/22.
+//  Created by Gustavo Gonzalez on 26/11/22.
 //
 
 import UIKit
@@ -11,17 +11,13 @@ import SwiftUI
 class ViewController: UIViewController {
     
     @IBOutlet weak var logoImage: UIImageView!
-    
     @IBOutlet weak var label: UILabel!
-    
-    
     @IBOutlet weak var emailTextField: UITextField!
-    
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var biometricButton: UIButton!
+    
+    var networking = NetworkingProvider()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +25,7 @@ class ViewController: UIViewController {
     }
     
     func setupUI() {
-        let user = retreiveUserInfo()
+        let user = retrieveUserInfo()
         biometricButton.isEnabled = true
         if user.acceso {
             biometricButton.isEnabled = true
@@ -53,7 +49,6 @@ class ViewController: UIViewController {
         let passwordTextFieldAttributedText = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "default") ?? Color.gray])
         self.passwordTextField.attributedPlaceholder = passwordTextFieldAttributedText
     }
-    var networking = NetworkingProvider()
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         if emailTextField.text == "" {
@@ -101,7 +96,7 @@ class ViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    func retreiveUserInfo() -> User{
+    func retrieveUserInfo() -> User{
         let user: User? = UserDefaults.standard.retrieveCodable(for: "user")
         return user ?? User(id: nil, nombre: nil, apellido: nil, acceso: false, admin: nil, email: nil)
     }

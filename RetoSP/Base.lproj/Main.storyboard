@@ -39,7 +39,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Dht-7z-ZhR">
                                 <rect key="frame" x="47.5" y="208.5" width="280" height="253"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzm-jR-34k" userLabel="Email text Field">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="Xzm-jR-34k" userLabel="Email Text Field">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
                                         <color key="tintColor" name="default"/>
                                         <constraints>
@@ -164,10 +164,75 @@
                                 <color key="textColor" name="default"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0e0-hh-jGu">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="topBanner" translatesAutoresizingMaskIntoConstraints="NO" id="2XH-0m-rht">
+                                <rect key="frame" x="0.0" y="76" width="375" height="244"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="240" id="12b-iK-Wpg"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="lVk-ux-rDU"/>
+                                </constraints>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn7-4S-Jf4" userLabel="Send Documents Scroll View">
+                                <rect key="frame" x="16" y="328" width="343" height="80"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Enviar documentos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6A-5F-TlV" userLabel="Send Documents">
+                                        <rect key="frame" x="55" y="0.0" width="142" height="37"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="37" id="cBT-uB-aT6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <color key="textColor" name="enviarDocumentos"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.text" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CEa-fZ-x5D">
+                                        <rect key="frame" x="31" y="13" width="24" height="24"/>
+                                        <color key="tintColor" name="enviarDocumentos"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Ccz-52-ktA"/>
+                                            <constraint firstAttribute="width" constant="24" id="HHp-73-fz1"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feD-NU-cSf" userLabel="Send Documents Button">
+                                        <rect key="frame" x="213" y="42" width="114" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="7Rl-kZ-E27"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="Rjl-8B-yli"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system" imagePlacement="trailing" title="Ingresar   " cornerStyle="large">
+                                            <backgroundConfiguration key="background">
+                                                <color key="strokeColor" name="enviarDocumentos"/>
+                                            </backgroundConfiguration>
+                                            <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
+                                            <color key="baseForegroundColor" name="enviarDocumentos"/>
+                                            <color key="baseBackgroundColor" name="background"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="sendDocumentsTapped:" destination="niH-nf-wOe" eventType="touchUpInside" id="YO4-Ki-kpC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="feD-NU-cSf" secondAttribute="trailing" constant="16" id="0VN-rk-6tG"/>
+                                    <constraint firstItem="m6A-5F-TlV" firstAttribute="leading" secondItem="4ZD-SJ-6Yf" secondAttribute="leading" constant="55" id="6AH-cr-CYp"/>
+                                    <constraint firstItem="m6A-5F-TlV" firstAttribute="top" secondItem="4ZD-SJ-6Yf" secondAttribute="top" id="D5R-hP-6mN"/>
+                                    <constraint firstItem="feD-NU-cSf" firstAttribute="top" secondItem="4ZD-SJ-6Yf" secondAttribute="top" constant="42" id="FRx-nc-kmq"/>
+                                    <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="m6A-5F-TlV" secondAttribute="trailing" symbolic="YES" id="PeB-eY-AmT"/>
+                                    <constraint firstItem="feD-NU-cSf" firstAttribute="leading" secondItem="4ZD-SJ-6Yf" secondAttribute="leading" constant="213" id="QN0-Hr-Rpo"/>
+                                    <constraint firstItem="m6A-5F-TlV" firstAttribute="leading" secondItem="CEa-fZ-x5D" secondAttribute="trailing" id="bCo-tf-N9C"/>
+                                    <constraint firstItem="CEa-fZ-x5D" firstAttribute="top" secondItem="4ZD-SJ-6Yf" secondAttribute="top" constant="13" id="bDl-kL-67E"/>
+                                    <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="bottom" secondItem="feD-NU-cSf" secondAttribute="bottom" constant="8" id="bve-5Q-NZp"/>
+                                    <constraint firstItem="feD-NU-cSf" firstAttribute="bottom" secondItem="Wn7-4S-Jf4" secondAttribute="bottomMargin" id="hWT-y9-61F"/>
+                                    <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="trailing" secondItem="feD-NU-cSf" secondAttribute="trailing" constant="16" id="ihA-VM-Sck"/>
+                                    <constraint firstAttribute="height" constant="80" id="k8m-QB-JVu"/>
+                                    <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="trailing" secondItem="m6A-5F-TlV" secondAttribute="trailing" constant="146" id="nUJ-g6-cDK"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="3Ra-EC-a7w"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="4ZD-SJ-6Yf"/>
+                            </scrollView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0e0-hh-jGu" userLabel="Display Documents Scroll View">
                                 <rect key="frame" x="16" y="422" width="343" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Ver documentos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuQ-t1-rgN">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Ver documentos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuQ-t1-rgN" userLabel="Display Documents">
                                         <rect key="frame" x="55" y="0.0" width="133" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="37" id="GsN-DB-Teg"/>
@@ -180,15 +245,15 @@
                                         <rect key="frame" x="31" y="12.5" width="24" height="25.5"/>
                                         <color key="tintColor" name="verDocumentos"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="XJL-7g-SAQ"/>
                                             <constraint firstAttribute="height" constant="24" id="eiS-co-k1E"/>
                                             <constraint firstAttribute="width" constant="24" id="z5m-aY-fwJ"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ii-Z9-Acf" userLabel="Boton Ver Doc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ii-Z9-Acf" userLabel="Display Documents Button">
                                         <rect key="frame" x="213" y="42" width="114" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="0Wp-J5-jjS"/>
+                                            <constraint firstAttribute="height" constant="30" id="CxR-2W-F6E"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system" imagePlacement="trailing" title="Ingresar   " cornerStyle="large">
@@ -200,7 +265,7 @@
                                             <color key="baseBackgroundColor" name="background"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="verDocumenosTapped:" destination="niH-nf-wOe" eventType="touchUpInside" id="1if-zG-c4x"/>
+                                            <action selector="displayDocumentsTapped:" destination="niH-nf-wOe" eventType="touchUpInside" id="W78-nb-N2C"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -222,76 +287,10 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="h9t-AS-kZh"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="NUw-V0-tf7"/>
                             </scrollView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topBanner" translatesAutoresizingMaskIntoConstraints="NO" id="2XH-0m-rht">
-                                <rect key="frame" x="0.0" y="76" width="375" height="240"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="240" id="12b-iK-Wpg"/>
-                                    <constraint firstAttribute="width" constant="375" id="lVk-ux-rDU"/>
-                                </constraints>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn7-4S-Jf4">
-                                <rect key="frame" x="16" y="324" width="343" height="80"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Enviar documentos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6A-5F-TlV">
-                                        <rect key="frame" x="55" y="0.0" width="142" height="37"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="cBT-uB-aT6"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
-                                        <color key="textColor" name="enviarDocumentos"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc.text" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CEa-fZ-x5D">
-                                        <rect key="frame" x="31" y="13" width="24" height="24"/>
-                                        <color key="tintColor" name="enviarDocumentos"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="Ccz-52-ktA"/>
-                                            <constraint firstAttribute="width" constant="24" id="HHp-73-fz1"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="w78-qA-j2w"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="feD-NU-cSf" userLabel="Boton Enviar Doc">
-                                        <rect key="frame" x="211" y="42" width="122" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="Rjl-8B-yli"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system" imagePlacement="trailing" title="Ingresar   " cornerStyle="large">
-                                            <backgroundConfiguration key="background">
-                                                <color key="strokeColor" name="enviarDocumentos"/>
-                                            </backgroundConfiguration>
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
-                                            <color key="baseForegroundColor" name="enviarDocumentos"/>
-                                            <color key="baseBackgroundColor" name="background"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="enviarDocumentosTapped:" destination="niH-nf-wOe" eventType="touchUpInside" id="hCo-fe-xXm"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="feD-NU-cSf" secondAttribute="trailing" constant="20" id="0VN-rk-6tG"/>
-                                    <constraint firstItem="feD-NU-cSf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4ZD-SJ-6Yf" secondAttribute="leading" symbolic="YES" id="5bT-NP-8DT"/>
-                                    <constraint firstItem="m6A-5F-TlV" firstAttribute="leading" secondItem="4ZD-SJ-6Yf" secondAttribute="leading" constant="55" id="6AH-cr-CYp"/>
-                                    <constraint firstItem="m6A-5F-TlV" firstAttribute="top" secondItem="4ZD-SJ-6Yf" secondAttribute="top" id="D5R-hP-6mN"/>
-                                    <constraint firstItem="feD-NU-cSf" firstAttribute="top" secondItem="4ZD-SJ-6Yf" secondAttribute="top" constant="42" id="FRx-nc-kmq"/>
-                                    <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="m6A-5F-TlV" secondAttribute="trailing" symbolic="YES" id="PeB-eY-AmT"/>
-                                    <constraint firstItem="feD-NU-cSf" firstAttribute="leading" secondItem="4ZD-SJ-6Yf" secondAttribute="leading" constant="211" id="QN0-Hr-Rpo"/>
-                                    <constraint firstItem="m6A-5F-TlV" firstAttribute="leading" secondItem="CEa-fZ-x5D" secondAttribute="trailing" id="bCo-tf-N9C"/>
-                                    <constraint firstItem="CEa-fZ-x5D" firstAttribute="top" secondItem="4ZD-SJ-6Yf" secondAttribute="top" constant="13" id="bDl-kL-67E"/>
-                                    <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="bottom" secondItem="feD-NU-cSf" secondAttribute="bottom" constant="8" id="bve-5Q-NZp"/>
-                                    <constraint firstItem="feD-NU-cSf" firstAttribute="bottom" secondItem="Wn7-4S-Jf4" secondAttribute="bottomMargin" id="hWT-y9-61F"/>
-                                    <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="trailing" secondItem="feD-NU-cSf" secondAttribute="trailing" constant="10" id="ihA-VM-Sck"/>
-                                    <constraint firstAttribute="height" constant="80" id="k8m-QB-JVu"/>
-                                    <constraint firstItem="4ZD-SJ-6Yf" firstAttribute="trailing" secondItem="m6A-5F-TlV" secondAttribute="trailing" constant="146" id="nUJ-g6-cDK"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="3Ra-EC-a7w"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="4ZD-SJ-6Yf"/>
-                            </scrollView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zko-iO-qkp">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zko-iO-qkp" userLabel="Locate Offices Scroll View">
                                 <rect key="frame" x="16" y="516" width="343" height="80"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Oficinas                    " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTK-Eh-51w">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Oficinas                    " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTK-Eh-51w" userLabel="Offices">
                                         <rect key="frame" x="55" y="0.0" width="118" height="37"/>
                                         <color key="tintColor" name="oficinas"/>
                                         <constraints>
@@ -305,13 +304,12 @@
                                         <rect key="frame" x="31" y="13" width="24" height="24"/>
                                         <color key="tintColor" name="oficinas"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="NH6-Vs-G04"/>
                                             <constraint firstAttribute="width" constant="24" id="xEB-b6-7nb"/>
                                             <constraint firstAttribute="height" constant="24" id="yLS-RF-B15"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acN-lo-bON" userLabel="Boton Oficinas">
-                                        <rect key="frame" x="215" y="42" width="110" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="acN-lo-bON" userLabel="Locate Offices Button">
+                                        <rect key="frame" x="213" y="42" width="112" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Qgz-63-etJ"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="ap7-8S-tHj"/>
@@ -326,12 +324,12 @@
                                             <color key="baseBackgroundColor" name="background"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="verOficinasTapped:" destination="niH-nf-wOe" eventType="touchUpInside" id="8B0-He-1Zj"/>
+                                            <action selector="locateOfficesTapped:" destination="niH-nf-wOe" eventType="touchUpInside" id="5vH-Sq-pS7"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="acN-lo-bON" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1sP-lq-OGF" secondAttribute="leading" id="1K4-7l-OeY"/>
+                                    <constraint firstItem="acN-lo-bON" firstAttribute="leading" secondItem="1sP-lq-OGF" secondAttribute="leading" constant="213" id="1K4-7l-OeY"/>
                                     <constraint firstItem="OTK-Eh-51w" firstAttribute="leading" secondItem="Jqb-EZ-tds" secondAttribute="trailing" id="8mF-Un-KQL"/>
                                     <constraint firstItem="1sP-lq-OGF" firstAttribute="bottom" secondItem="acN-lo-bON" secondAttribute="bottom" constant="8" id="AEO-Qn-eJo"/>
                                     <constraint firstItem="1sP-lq-OGF" firstAttribute="trailing" secondItem="acN-lo-bON" secondAttribute="trailing" constant="18" id="H4g-bO-tuB"/>
@@ -362,6 +360,7 @@
                             <constraint firstItem="0e0-hh-jGu" firstAttribute="centerX" secondItem="Zko-iO-qkp" secondAttribute="centerX" id="R63-Cs-c9h"/>
                             <constraint firstItem="3I3-ol-WjV" firstAttribute="trailing" secondItem="PXP-Mi-kX5" secondAttribute="trailing" constant="16" id="RiC-5d-Ptc"/>
                             <constraint firstItem="2XH-0m-rht" firstAttribute="trailing" secondItem="3I3-ol-WjV" secondAttribute="trailing" id="T5e-Qx-e0l"/>
+                            <constraint firstItem="0e0-hh-jGu" firstAttribute="top" secondItem="Wn7-4S-Jf4" secondAttribute="bottom" constant="14" id="Tvi-5h-yOn"/>
                             <constraint firstItem="2XH-0m-rht" firstAttribute="leading" secondItem="3I3-ol-WjV" secondAttribute="leading" id="Ue0-as-dFN"/>
                             <constraint firstItem="3I3-ol-WjV" firstAttribute="trailing" secondItem="2XH-0m-rht" secondAttribute="trailing" id="dFN-RX-vQX"/>
                             <constraint firstItem="0e0-hh-jGu" firstAttribute="top" secondItem="nXI-TY-acg" secondAttribute="top" constant="422" id="kke-uW-tdz"/>
@@ -379,24 +378,24 @@
                         <outlet property="userNameLabel" destination="PXP-Mi-kX5" id="QTQ-cf-gon"/>
                         <outlet property="verDocumentosScrollView" destination="0e0-hh-jGu" id="nc6-ug-fU9"/>
                         <outlet property="verOficinasScrollView" destination="Zko-iO-qkp" id="SiG-EB-NIv"/>
-                        <segue destination="qKB-ac-yl1" kind="show" identifier="EnviarDocumentosSegue" id="oMy-c3-ufF"/>
-                        <segue destination="Isd-zH-Jea" kind="show" identifier="VerDocumentosSegue" id="IDl-ng-4Z1"/>
-                        <segue destination="no5-Wf-Nab" kind="show" identifier="VerOficinasSegue" id="Mr2-fk-wiS"/>
+                        <segue destination="qKB-ac-yl1" kind="show" identifier="SendDocumentsSegue" id="oMy-c3-ufF"/>
+                        <segue destination="Isd-zH-Jea" kind="show" identifier="DisplayDocumentsSegue" id="IDl-ng-4Z1"/>
+                        <segue destination="no5-Wf-Nab" kind="show" identifier="LocateOfficesSegue" id="Mr2-fk-wiS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBK-85-j1A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2700" y="-70.614692653673174"/>
         </scene>
-        <!--Ver Documentos View Controller-->
+        <!--Display Documents View Controller-->
         <scene sceneID="GP1-Bu-iNU">
             <objects>
-                <viewController id="Isd-zH-Jea" customClass="VerDocumentosViewController" customModule="RetoSP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Isd-zH-Jea" customClass="DisplayDocumentsViewController" customModule="RetoSP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y6Q-K9-fPr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ver Documentos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyB-oO-omv">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ver Documentos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyB-oO-omv" userLabel="Display Documents">
                                 <rect key="frame" x="124" y="65" width="127" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -415,15 +414,15 @@
             </objects>
             <point key="canvasLocation" x="3616.8000000000002" y="-74.212893553223395"/>
         </scene>
-        <!--Ver Oficinas View Controller-->
+        <!--Locate Offices View Controller-->
         <scene sceneID="KiO-ke-mjG">
             <objects>
-                <viewController id="no5-Wf-Nab" customClass="VerOficinasViewController" customModule="RetoSP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="no5-Wf-Nab" customClass="LocateOfficesViewController" customModule="RetoSP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XNt-0I-U4N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oficinas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3i-bC-VHJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oficinas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3i-bC-VHJ" userLabel="Offices">
                                 <rect key="frame" x="166" y="55" width="62" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -440,15 +439,15 @@
             </objects>
             <point key="canvasLocation" x="2678" y="702"/>
         </scene>
-        <!--Enviar Documentos View Controller-->
+        <!--Send Documents View Controller-->
         <scene sceneID="fwm-NB-zHd">
             <objects>
-                <viewController id="qKB-ac-yl1" customClass="EnviarDocumentosViewController" customModule="RetoSP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qKB-ac-yl1" customClass="SendDocumentsViewController" customModule="RetoSP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w9g-43-ZlT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Envío de documentación" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLs-23-5ea">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Envío de documentación" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLs-23-5ea" userLabel="Send Documents">
                                 <rect key="frame" x="5" y="49" width="250" height="19.5"/>
                                 <color key="tintColor" name="enviarDocumentos"/>
                                 <constraints>
@@ -468,7 +467,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRO-rO-ote">
                                 <rect key="frame" x="20" y="141.5" width="335" height="28"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tipo de documento" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vft-9E-kdI">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tipo de documento" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vft-9E-kdI" userLabel="Document Type">
                                         <rect key="frame" x="8" y="3.5" width="287" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -497,14 +496,14 @@
                                     <constraint firstAttribute="bottom" secondItem="ewO-rc-Vkw" secondAttribute="bottom" constant="4" id="oA3-Tu-2yI"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wm4-xY-f0l" userLabel="Numero de documento">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wm4-xY-f0l" userLabel="Document Number">
                                 <rect key="frame" x="20" y="178.5" width="335" height="28"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.text.rectangle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="W9H-yv-BaI">
                                         <rect key="frame" x="8" y="5" width="24" height="17.5"/>
                                         <color key="tintColor" red="0.17254814509999999" green="0.140445292" blue="0.17255249619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número de documento" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GVh-id-pvF">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Número de documento" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GVh-id-pvF" userLabel="Document Number">
                                         <rect key="frame" x="40" y="0.0" width="287" height="28"/>
                                         <color key="tintColor" red="0.17254814509999999" green="0.140445292" blue="0.17255249619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -558,13 +557,13 @@
                                     <constraint firstAttribute="height" constant="1" id="Bfq-ux-mZo"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombres" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYn-ul-HLi">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nombres" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aYn-ul-HLi" userLabel="Names">
                                 <rect key="frame" x="20" y="227.5" width="335" height="34"/>
                                 <color key="tintColor" red="0.17254814509999999" green="0.140445292" blue="0.17255249619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apellidos" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TfP-2z-oPy">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apellidos" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TfP-2z-oPy" userLabel="Last Names">
                                 <rect key="frame" x="20" y="282.5" width="335" height="34"/>
                                 <color key="tintColor" red="0.17254814509999999" green="0.140445292" blue="0.17255249619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -579,7 +578,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Ep-Va-788" userLabel="City">
                                 <rect key="frame" x="20" y="392.5" width="335" height="28"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ciudad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxB-R1-oly">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ciudad" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxB-R1-oly" userLabel="City">
                                         <rect key="frame" x="8" y="3.5" width="46" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
@@ -608,7 +607,7 @@
                                     <constraint firstItem="lxB-R1-oly" firstAttribute="leading" secondItem="9Ep-Va-788" secondAttribute="leading" constant="8" id="sVi-ds-MXo"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W84-BN-uB4">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W84-BN-uB4" userLabel="Upload Document">
                                 <rect key="frame" x="20" y="451.5" width="140" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="140" id="JaT-c9-qmO"/>
@@ -630,7 +629,7 @@
                                     <constraint firstAttribute="height" constant="1" id="YxP-G3-svp"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIZ-aU-p0F">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FIZ-aU-p0F" userLabel="Send">
                                 <rect key="frame" x="20" y="525.5" width="335" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="e2c-kQ-z8d"/>
@@ -697,8 +696,8 @@
                     </view>
                     <navigationItem key="navigationItem" customizationIdentifier="" id="znQ-01-U10"/>
                     <connections>
+                        <outlet property="documentTypeLabel" destination="Vft-9E-kdI" id="c5q-1L-ZIy"/>
                         <outlet property="selectDocument" destination="HRO-rO-ote" id="IgH-9m-1w4"/>
-                        <outlet property="tipoDeDocumentoLabel" destination="Vft-9E-kdI" id="c5q-1L-ZIy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wun-EH-WxG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

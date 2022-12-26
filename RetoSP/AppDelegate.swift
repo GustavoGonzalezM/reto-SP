@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  RetoSP
 //
-//  Created by Usuario on 26/11/22.
+//  Created by Gustavo Gonzalez on 26/11/22.
 //
 
 import UIKit

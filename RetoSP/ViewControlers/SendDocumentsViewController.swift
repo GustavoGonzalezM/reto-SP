@@ -2,13 +2,13 @@
 //  EnviarDocumentosViewController.swift
 //  RetoSP
 //
-//  Created by Usuario on 30/11/22.
+//  Created by Gustavo Gonzalez on 30/11/22.
 //
 
 import UIKit
 import DropDown
 
-class EnviarDocumentosViewController: UIViewController {
+class SendDocumentsViewController: UIViewController {
 
     @IBOutlet weak var selectDocument: UIView!
     let menu: DropDown = {
@@ -24,7 +24,7 @@ class EnviarDocumentosViewController: UIViewController {
     }()
     
     
-    @IBOutlet weak var tipoDeDocumentoLabel: UILabel!
+    @IBOutlet weak var documentTypeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,8 +32,8 @@ class EnviarDocumentosViewController: UIViewController {
             self.menu.show()
         }
         menu.anchorView = selectDocument
-        menu.selectionAction = { _, seleccionado in
-            self.tipoDeDocumentoLabel.text = seleccionado
+        menu.selectionAction = { _, selected in
+            self.documentTypeLabel.text = selected
         }
     }
     
@@ -46,9 +46,9 @@ class ClickListener: UITapGestureRecognizer {
 extension UIView {
     
     func setOnClickListener(action :@escaping () -> Void){
-        let tapRecogniser = ClickListener(target: self, action: #selector(onViewClicked(sender:)))
-        tapRecogniser.onClick = action
-        self.addGestureRecognizer(tapRecogniser)
+        let tapRecognizer = ClickListener(target: self, action: #selector(onViewClicked(sender:)))
+        tapRecognizer.onClick = action
+        self.addGestureRecognizer(tapRecognizer)
     }
      
     @objc func onViewClicked(sender: ClickListener) {
