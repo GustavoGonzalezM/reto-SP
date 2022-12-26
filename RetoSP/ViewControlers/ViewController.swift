@@ -25,14 +25,14 @@ class ViewController: UIViewController {
     }
     
     func setupUI() {
-        let user = retrieveUserInfo()
-        biometricButton.isEnabled = true
-        if user.acceso {
+        biometricButton.isEnabled = false
+        self.biometricButton.layer.cornerRadius = 10.0
+        
+        if userIsEnrolled() {
             biometricButton.isEnabled = true
+            self.biometricButton.layer.borderColor = UIColor(named: "default")?.cgColor
         }
         
-        self.biometricButton.layer.cornerRadius = 10.0
-        self.biometricButton.layer.borderColor = UIColor(named: "default")?.cgColor
         self.biometricButton.layer.borderWidth = 1.0
         
         self.emailTextField.layer.cornerRadius = 10.0
@@ -61,8 +61,7 @@ class ViewController: UIViewController {
             networking.login(user: emailTextField.text!, password: passwordTextField.text!) { user in
                 DispatchQueue.main.async {
                     if user.acceso == true {
-                        let user = User(id: user.id, nombre: user.nombre, apellido: user.apellido, acceso: user.acceso, admin: user.admin, email: self.emailTextField.text)
-                        UserDefaults.standard.storeCodable(user, key: "user")
+                        self.biometricButton.isEnabled = true
                         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MenuScreenViewController") as! MenuScreenViewController
                         self.navigationController?.pushViewController(viewController, animated: true)
                         
@@ -96,9 +95,7 @@ class ViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    func retrieveUserInfo() -> User{
-        let user: User? = UserDefaults.standard.retrieveCodable(for: "user")
-        return user ?? User(id: nil, nombre: nil, apellido: nil, acceso: false, admin: nil, email: nil)
-    }
+    func userIsEnrolled() -> Bool { UserDefaults.standard.bool(forKey: "enrolled") }
+    
 }
 

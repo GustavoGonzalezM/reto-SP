@@ -5,17 +5,6 @@
 //  Created by Gustavo Gonzalez on 30/11/22.
 //
 
-
-
-//{
-//"ïd" : "115",
-//"nombre" : "Gustavo",
-//"apellido" : "Gonzalez",
-//"acceso" : true,
-//"admin" : false
-
-//}
-
 import Foundation
 
 struct User: Codable {

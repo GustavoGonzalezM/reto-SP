@@ -9,10 +9,9 @@ import UIKit
 
 class MenuScreenViewController: UIViewController {
 
-    @IBOutlet weak var enviarDocumentosScrollView: UIScrollView!
-    @IBOutlet weak var verDocumentosScrollView: UIScrollView!
-    @IBOutlet weak var verOficinasScrollView: UIScrollView!
-    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var sendDocumentsScrollView: UIScrollView!
+    @IBOutlet weak var displayDocumentsScrollView: UIScrollView!
+    @IBOutlet weak var locateOfficesScrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,32 +20,26 @@ class MenuScreenViewController: UIViewController {
     }
     
     func setupUI(){
-        let user = retreiveUserInfo()
-        self.userNameLabel.text = user.nombre
+        guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
         
         self.navigationController?.navigationBar.tintColor = UIColor(named: "default")
         
         self.navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: user.nombre)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
         
-        self.enviarDocumentosScrollView.layer.cornerRadius = 10.0
-        self.enviarDocumentosScrollView.layer.borderColor = UIColor(named: "sendDocuments")?.cgColor
-        self.enviarDocumentosScrollView.layer.borderWidth = 1.0
+        self.sendDocumentsScrollView.layer.cornerRadius = 10.0
+        self.sendDocumentsScrollView.layer.borderColor = UIColor(named: "sendDocuments")?.cgColor
+        self.sendDocumentsScrollView.layer.borderWidth = 1.0
         
-        self.verDocumentosScrollView.layer.cornerRadius = 10.0
-        self.verDocumentosScrollView.layer.borderColor = UIColor(named: "displayDocuments")?.cgColor
-        self.verDocumentosScrollView.layer.borderWidth = 1.0
+        self.displayDocumentsScrollView.layer.cornerRadius = 10.0
+        self.displayDocumentsScrollView.layer.borderColor = UIColor(named: "displayDocuments")?.cgColor
+        self.displayDocumentsScrollView.layer.borderWidth = 1.0
 
-        self.verOficinasScrollView.layer.cornerRadius = 10.0
-        self.verOficinasScrollView.layer.borderColor = UIColor(named: "offices")?.cgColor
-        self.verOficinasScrollView.layer.borderWidth = 1.0
+        self.locateOfficesScrollView.layer.cornerRadius = 10.0
+        self.locateOfficesScrollView.layer.borderColor = UIColor(named: "offices")?.cgColor
+        self.locateOfficesScrollView.layer.borderWidth = 1.0
     }
-    
-    func retreiveUserInfo() -> User {
-        let user: User? = UserDefaults.standard.retrieveCodable(for: "user")
-        return user ?? User(id: nil, nombre: nil, apellido: nil, acceso: false, admin: nil, email: nil)
-    }
-    
     
     @IBAction func sendDocumentsTapped(_ sender: Any) {
         self.performSegue(withIdentifier: "SendDocumentsSegue", sender: self)

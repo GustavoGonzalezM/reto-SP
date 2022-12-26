@@ -28,7 +28,12 @@ final class NetworkingProvider {
             
             do {
                 let decodedData = try JSONDecoder().decode(User.self, from: data)
-                    success(decodedData)
+                if decodedData.acceso {
+                    UserDefaults.standard.set(true, forKey: "enrolled")
+                    UserDefaults.standard.storeCodable(decodedData, key: "user")
+                }
+                success(decodedData)
+                
             } catch {
                 print(error.localizedDescription)
                 failure(error)

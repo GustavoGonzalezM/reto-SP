@@ -158,21 +158,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PXP-Mi-kX5">
-                                <rect key="frame" x="16" y="44" width="343" height="24"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="textColor" name="default"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="topBanner" translatesAutoresizingMaskIntoConstraints="NO" id="2XH-0m-rht">
-                                <rect key="frame" x="0.0" y="76" width="375" height="244"/>
+                                <rect key="frame" x="0.0" y="92" width="375" height="244"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="240" id="12b-iK-Wpg"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="375" id="lVk-ux-rDU"/>
                                 </constraints>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wn7-4S-Jf4" userLabel="Send Documents Scroll View">
-                                <rect key="frame" x="16" y="328" width="343" height="80"/>
+                                <rect key="frame" x="16" y="344" width="343" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Enviar documentos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6A-5F-TlV" userLabel="Send Documents">
                                         <rect key="frame" x="55" y="0.0" width="142" height="37"/>
@@ -230,7 +224,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="4ZD-SJ-6Yf"/>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0e0-hh-jGu" userLabel="Display Documents Scroll View">
-                                <rect key="frame" x="16" y="422" width="343" height="80"/>
+                                <rect key="frame" x="16" y="438" width="343" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Ver documentos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuQ-t1-rgN" userLabel="Display Documents">
                                         <rect key="frame" x="55" y="0.0" width="133" height="37"/>
@@ -288,7 +282,7 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="NUw-V0-tf7"/>
                             </scrollView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zko-iO-qkp" userLabel="Locate Offices Scroll View">
-                                <rect key="frame" x="16" y="516" width="343" height="80"/>
+                                <rect key="frame" x="16" y="532" width="343" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Oficinas                    " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTK-Eh-51w" userLabel="Offices">
                                         <rect key="frame" x="55" y="0.0" width="118" height="37"/>
@@ -351,33 +345,28 @@
                             <constraint firstItem="3I3-ol-WjV" firstAttribute="trailing" secondItem="Zko-iO-qkp" secondAttribute="trailing" constant="16" id="0nm-iP-dAR"/>
                             <constraint firstItem="Wn7-4S-Jf4" firstAttribute="top" secondItem="2XH-0m-rht" secondAttribute="bottom" constant="8" id="27l-mP-8JL"/>
                             <constraint firstItem="3I3-ol-WjV" firstAttribute="trailing" secondItem="0e0-hh-jGu" secondAttribute="trailing" constant="16" id="461-0S-jdB"/>
-                            <constraint firstItem="3I3-ol-WjV" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="PXP-Mi-kX5" secondAttribute="trailing" symbolic="YES" id="4r8-HX-eXM"/>
-                            <constraint firstItem="2XH-0m-rht" firstAttribute="top" secondItem="nXI-TY-acg" secondAttribute="top" constant="76" id="9yg-ps-lO2"/>
+                            <constraint firstItem="2XH-0m-rht" firstAttribute="top" secondItem="nXI-TY-acg" secondAttribute="top" constant="92" id="9yg-ps-lO2"/>
                             <constraint firstItem="0e0-hh-jGu" firstAttribute="centerX" secondItem="2XH-0m-rht" secondAttribute="centerX" id="AhG-er-Ryw"/>
                             <constraint firstItem="0e0-hh-jGu" firstAttribute="trailing" secondItem="Zko-iO-qkp" secondAttribute="trailing" id="IvB-dg-SSF"/>
                             <constraint firstItem="3I3-ol-WjV" firstAttribute="trailing" secondItem="Wn7-4S-Jf4" secondAttribute="trailing" constant="16" id="JMG-C7-yRU"/>
                             <constraint firstItem="Zko-iO-qkp" firstAttribute="top" secondItem="0e0-hh-jGu" secondAttribute="bottom" constant="14" id="KOx-a4-xPe"/>
                             <constraint firstItem="0e0-hh-jGu" firstAttribute="centerX" secondItem="Zko-iO-qkp" secondAttribute="centerX" id="R63-Cs-c9h"/>
-                            <constraint firstItem="3I3-ol-WjV" firstAttribute="trailing" secondItem="PXP-Mi-kX5" secondAttribute="trailing" constant="16" id="RiC-5d-Ptc"/>
                             <constraint firstItem="2XH-0m-rht" firstAttribute="trailing" secondItem="3I3-ol-WjV" secondAttribute="trailing" id="T5e-Qx-e0l"/>
                             <constraint firstItem="0e0-hh-jGu" firstAttribute="top" secondItem="Wn7-4S-Jf4" secondAttribute="bottom" constant="14" id="Tvi-5h-yOn"/>
                             <constraint firstItem="2XH-0m-rht" firstAttribute="leading" secondItem="3I3-ol-WjV" secondAttribute="leading" id="Ue0-as-dFN"/>
                             <constraint firstItem="3I3-ol-WjV" firstAttribute="trailing" secondItem="2XH-0m-rht" secondAttribute="trailing" id="dFN-RX-vQX"/>
-                            <constraint firstItem="0e0-hh-jGu" firstAttribute="top" secondItem="nXI-TY-acg" secondAttribute="top" constant="422" id="kke-uW-tdz"/>
-                            <constraint firstItem="Wn7-4S-Jf4" firstAttribute="leading" secondItem="PXP-Mi-kX5" secondAttribute="leading" id="mIO-rt-k26"/>
+                            <constraint firstItem="0e0-hh-jGu" firstAttribute="top" secondItem="nXI-TY-acg" secondAttribute="top" constant="438" id="kke-uW-tdz"/>
                             <constraint firstItem="2XH-0m-rht" firstAttribute="leading" secondItem="3I3-ol-WjV" secondAttribute="leading" id="nKZ-lL-ymd"/>
                             <constraint firstItem="Wn7-4S-Jf4" firstAttribute="leading" secondItem="0e0-hh-jGu" secondAttribute="leading" id="oCs-11-zpU"/>
-                            <constraint firstItem="2XH-0m-rht" firstAttribute="top" secondItem="PXP-Mi-kX5" secondAttribute="bottom" constant="8" id="xXR-8l-ddA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aZu-Cb-qxj">
                         <barButtonItem key="backBarButtonItem" title="Regresar" id="qcE-aH-Jg6"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="enviarDocumentosScrollView" destination="Wn7-4S-Jf4" id="FFM-B7-Zl2"/>
-                        <outlet property="userNameLabel" destination="PXP-Mi-kX5" id="QTQ-cf-gon"/>
-                        <outlet property="verDocumentosScrollView" destination="0e0-hh-jGu" id="nc6-ug-fU9"/>
-                        <outlet property="verOficinasScrollView" destination="Zko-iO-qkp" id="SiG-EB-NIv"/>
+                        <outlet property="displayDocumentsScrollView" destination="0e0-hh-jGu" id="nc6-ug-fU9"/>
+                        <outlet property="locateOfficesScrollView" destination="Zko-iO-qkp" id="SiG-EB-NIv"/>
+                        <outlet property="sendDocumentsScrollView" destination="Wn7-4S-Jf4" id="FFM-B7-Zl2"/>
                         <segue destination="qKB-ac-yl1" kind="show" identifier="SendDocumentsSegue" id="oMy-c3-ufF"/>
                         <segue destination="Isd-zH-Jea" kind="show" identifier="DisplayDocumentsSegue" id="IDl-ng-4Z1"/>
                         <segue destination="no5-Wf-Nab" kind="show" identifier="LocateOfficesSegue" id="Mr2-fk-wiS"/>
