@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import DropDown
 
 class MenuScreenViewController: UIViewController {
 
@@ -13,9 +14,29 @@ class MenuScreenViewController: UIViewController {
     @IBOutlet weak var displayDocumentsScrollView: UIScrollView!
     @IBOutlet weak var locateOfficesScrollView: UIScrollView!
     
+    var osTheme: UIUserInterfaceStyle {
+        return UIScreen.main.traitCollection.userInterfaceStyle
+    }
+    
+    var mainMenu: DropDown = DropDown()
+    
+    var appearanceMode: Int = 0
+    var appearanceText: String = ""
+    var menuDatasource = [
+        "Enviar documentos",
+        "Ver Documentos",
+        "Oficinas",
+        "Modo",
+        "Idioma Inglés"
+        ]
+        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        appearanceMode = osTheme.rawValue
+        appearanceText = appearanceMode == 1 ? "nocturno" : "día"
+        setupAppearanceText(appearanceText)
         
     }
     
@@ -55,7 +76,40 @@ class MenuScreenViewController: UIViewController {
     }
     
     @objc func menu() {
-        print("Menu Tapped")
+        mainMenu.anchorView = self.navigationItem.rightBarButtonItem
+        mainMenu.bottomOffset = CGPoint(x: 0, y: 30)
+        mainMenu.selectionAction = { index, _ in
+            switch index {
+            case 0:
+                self.sendDocumentsTapped(self)
+            case 1:
+                self.displayDocumentsTapped(self)
+            case 2:
+                self.locateOfficesTapped(self)
+            case 3:
+                if self.appearanceMode == 1 {
+                    self.view.overrideUserInterfaceStyle = .dark
+                    self.navigationController?.navigationBar.tintColor = UIColor.white
+                    self.setupAppearanceText("día")
+                    self.appearanceMode = 2
+                } else if self.appearanceMode == 2 {
+                    self.view.overrideUserInterfaceStyle = .light
+                    self.navigationController?.navigationBar.tintColor = UIColor(named: "default")
+                    self.setupAppearanceText("nocturno")
+                    self.appearanceMode = 1
+                }
+                
+            case 4:
+                print("Modo inglés seleccionado")
+            default:
+                print(index)
+            }
+        }
+        mainMenu.dataSource = menuDatasource
+        mainMenu.show()
     }
     
+    func setupAppearanceText(_ appearance: String){
+        menuDatasource[3] = "Modo \(appearance)"
+    }
 }

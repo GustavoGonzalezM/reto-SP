@@ -1,7 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "image 6.png",
+      "filename" : "image 6.pdf",
+      "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "image 5.pdf",
       "idiom" : "universal"
     }
   ],

@@ -25,28 +25,29 @@ class ViewController: UIViewController {
     }
     
     func setupUI() {
-        biometricButton.isEnabled = false
         self.biometricButton.layer.cornerRadius = 10.0
         
         if userIsEnrolled() {
-            biometricButton.isEnabled = true
-            self.biometricButton.layer.borderColor = UIColor(named: "default")?.cgColor
+            self.biometricButton.isEnabled = true
         }
         
         self.biometricButton.layer.borderWidth = 1.0
         
-        self.emailTextField.layer.cornerRadius = 10.0
-        self.emailTextField.layer.borderColor = UIColor(named: "default")?.cgColor
+       
+        self.emailTextField.layer.borderColor = UIColor(named: "loginTextFields")?.cgColor
+        self.emailTextField.backgroundColor = UIColor(.white)
         self.emailTextField.layer.borderWidth = 1.0
+        self.emailTextField.layer.cornerRadius = 10.0
         
-        self.passwordTextField.layer.cornerRadius = 10.0
-        self.passwordTextField.layer.borderColor = UIColor(named: "default")?.cgColor
+        self.passwordTextField.layer.borderColor = UIColor(named: "loginTextFields")?.cgColor
+        self.passwordTextField.backgroundColor = UIColor(.white)
         self.passwordTextField.layer.borderWidth = 1.0
+        self.passwordTextField.layer.cornerRadius = 10.0
         
-        let emailTextFieldAttributedText = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "default") ?? Color.gray])
+        let emailTextFieldAttributedText = NSAttributedString(string: "  Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "loginTextFields") ?? Color.gray])
         self.emailTextField.attributedPlaceholder = emailTextFieldAttributedText
         
-        let passwordTextFieldAttributedText = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "default") ?? Color.gray])
+        let passwordTextFieldAttributedText = NSAttributedString(string: "  Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "loginTextFields") ?? Color.gray])
         self.passwordTextField.attributedPlaceholder = passwordTextFieldAttributedText
     }
     
