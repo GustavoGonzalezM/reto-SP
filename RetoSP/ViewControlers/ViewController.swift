@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var biometricButton: UIButton!
+    @IBOutlet weak var emailContainerView: UIView!
+    @IBOutlet weak var passwordContainerView: UIView!
+    @IBOutlet weak var eyeImage: UIButton!
     
     var networking = NetworkingProvider()
     
@@ -34,21 +37,37 @@ class ViewController: UIViewController {
         self.biometricButton.layer.borderWidth = 1.0
         
        
-        self.emailTextField.layer.borderColor = UIColor(named: "loginTextFields")?.cgColor
+        self.emailContainerView.layer.borderColor = UIColor(named: "loginTextFields")?.cgColor
         self.emailTextField.backgroundColor = UIColor(.white)
-        self.emailTextField.layer.borderWidth = 1.0
-        self.emailTextField.layer.cornerRadius = 10.0
+        self.emailContainerView.layer.borderWidth = 1.0
+        self.emailContainerView.layer.cornerRadius = 10.0
         
         self.passwordTextField.layer.borderColor = UIColor(named: "loginTextFields")?.cgColor
         self.passwordTextField.backgroundColor = UIColor(.white)
-        self.passwordTextField.layer.borderWidth = 1.0
-        self.passwordTextField.layer.cornerRadius = 10.0
+        self.passwordContainerView.layer.borderWidth = 1.0
+        self.passwordContainerView.layer.cornerRadius = 10.0
         
-        let emailTextFieldAttributedText = NSAttributedString(string: "  Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "loginTextFields") ?? Color.gray])
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor(named: "loginTextFields") ?? Color.gray
+        ]
+        
+        let emailTextFieldAttributedText = NSAttributedString(string: "Email", attributes: attributes)
         self.emailTextField.attributedPlaceholder = emailTextFieldAttributedText
         
-        let passwordTextFieldAttributedText = NSAttributedString(string: "  Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "loginTextFields") ?? Color.gray])
+        let passwordTextFieldAttributedText = NSAttributedString(string: "Password", attributes: attributes)
         self.passwordTextField.attributedPlaceholder = passwordTextFieldAttributedText
+        
+    }
+    
+    @IBAction func eyeImageTapped(_ sender: Any) {
+        toggleEyeImage()
+    }
+    
+    func toggleEyeImage() {
+        passwordTextField.isSecureTextEntry.toggle()
+        let image = passwordTextField.isSecureTextEntry ? UIImage(systemName: "eye.fill") : UIImage(systemName: "eye.slash.fill")
+        self.eyeImage.setImage(image, for: .normal)
+       
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
