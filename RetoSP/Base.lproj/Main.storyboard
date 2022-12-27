@@ -45,8 +45,8 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="iz6-Yw-nM7">
                                                 <rect key="frame" x="4" y="0.5" width="20" height="39"/>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="  Email" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xzm-jR-34k" userLabel="Email Text Field">
-                                                <rect key="frame" x="28" y="0.0" width="248" height="40"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="leading" contentVerticalAlignment="center" placeholder="  Email" minimumFontSize="16" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Xzm-jR-34k" userLabel="Email Text Field">
+                                                <rect key="frame" x="28" y="0.0" width="244" height="40"/>
                                                 <color key="tintColor" name="default"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="hJ4-vH-whY"/>
@@ -63,7 +63,7 @@
                                             <constraint firstAttribute="height" constant="40" id="4Yq-Jm-QXc"/>
                                             <constraint firstItem="Xzm-jR-34k" firstAttribute="top" secondItem="2Rb-dk-LMj" secondAttribute="top" id="KwY-KT-nr7"/>
                                             <constraint firstItem="iz6-Yw-nM7" firstAttribute="top" secondItem="2Rb-dk-LMj" secondAttribute="top" id="SJD-iX-Nl9"/>
-                                            <constraint firstAttribute="trailing" secondItem="Xzm-jR-34k" secondAttribute="trailing" constant="4" id="Uz3-oU-i9s"/>
+                                            <constraint firstAttribute="trailing" secondItem="Xzm-jR-34k" secondAttribute="trailing" constant="8" id="Uz3-oU-i9s"/>
                                             <constraint firstAttribute="bottom" secondItem="iz6-Yw-nM7" secondAttribute="bottom" id="YKu-0y-C0r"/>
                                             <constraint firstItem="Xzm-jR-34k" firstAttribute="leading" secondItem="iz6-Yw-nM7" secondAttribute="trailing" constant="4" id="bbm-TF-Ilh"/>
                                             <constraint firstItem="iz6-Yw-nM7" firstAttribute="leading" secondItem="2Rb-dk-LMj" secondAttribute="leading" constant="4" id="yHu-Cu-g0b"/>
@@ -435,9 +435,9 @@
                         <outlet property="displayDocumentsScrollView" destination="0e0-hh-jGu" id="nc6-ug-fU9"/>
                         <outlet property="locateOfficesScrollView" destination="Zko-iO-qkp" id="SiG-EB-NIv"/>
                         <outlet property="sendDocumentsScrollView" destination="Wn7-4S-Jf4" id="FFM-B7-Zl2"/>
-                        <segue destination="qKB-ac-yl1" kind="show" identifier="SendDocumentsSegue" id="oMy-c3-ufF"/>
                         <segue destination="Isd-zH-Jea" kind="show" identifier="DisplayDocumentsSegue" id="IDl-ng-4Z1"/>
                         <segue destination="no5-Wf-Nab" kind="show" identifier="LocateOfficesSegue" id="Mr2-fk-wiS"/>
+                        <segue destination="qKB-ac-yl1" kind="show" identifier="SendDocumentsSegue" id="bX9-zN-Zzj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBK-85-j1A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -759,7 +759,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wun-EH-WxG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2677.5999999999999" y="-836.13193403298362"/>
+            <point key="canvasLocation" x="3616.8000000000002" y="-836.13193403298362"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Cn2-I7-MtA">

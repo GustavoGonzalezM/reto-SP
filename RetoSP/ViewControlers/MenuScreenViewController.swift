@@ -19,7 +19,6 @@ class MenuScreenViewController: UIViewController {
     }
     
     var mainMenu: DropDown = DropDown()
-    
     var appearanceMode: Int = 0
     var appearanceText: String = ""
     var menuDatasource = [
@@ -29,7 +28,6 @@ class MenuScreenViewController: UIViewController {
         "Modo",
         "Idioma Inglés"
         ]
-        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +42,6 @@ class MenuScreenViewController: UIViewController {
         guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
         
         self.navigationController?.navigationBar.tintColor = UIColor(named: "default")
-        
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: user.nombre)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
@@ -87,17 +84,7 @@ class MenuScreenViewController: UIViewController {
             case 2:
                 self.locateOfficesTapped(self)
             case 3:
-                if self.appearanceMode == 1 {
-                    self.view.overrideUserInterfaceStyle = .dark
-                    self.navigationController?.navigationBar.tintColor = UIColor.white
-                    self.setupAppearanceText("día")
-                    self.appearanceMode = 2
-                } else if self.appearanceMode == 2 {
-                    self.view.overrideUserInterfaceStyle = .light
-                    self.navigationController?.navigationBar.tintColor = UIColor(named: "default")
-                    self.setupAppearanceText("nocturno")
-                    self.appearanceMode = 1
-                }
+                self.setAppearance()
                 
             case 4:
                 print("Modo inglés seleccionado")
@@ -107,6 +94,25 @@ class MenuScreenViewController: UIViewController {
         }
         mainMenu.dataSource = menuDatasource
         mainMenu.show()
+    }
+    
+    func setAppearance() {
+        if self.appearanceMode == 1 {
+            self.view.overrideUserInterfaceStyle = .dark
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            UIApplication.shared.statusBarStyle = .lightContent
+            self.setupAppearanceText("día")
+            self.appearanceMode = 2
+            
+        } else if self.appearanceMode == 2 {
+            self.view.overrideUserInterfaceStyle = .light
+            self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
+            self.setNeedsStatusBarAppearanceUpdate()
+            UIApplication.shared.statusBarStyle = .darkContent
+            self.setupAppearanceText("nocturno")
+            self.appearanceMode = 1
+           
+        }
     }
     
     func setupAppearanceText(_ appearance: String){

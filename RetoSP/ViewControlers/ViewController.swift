@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SwiftUI
 
 class ViewController: UIViewController {
     
@@ -29,26 +28,21 @@ class ViewController: UIViewController {
     
     func setupUI() {
         self.biometricButton.layer.cornerRadius = 10.0
-        
-        if userIsEnrolled() {
-            self.biometricButton.isEnabled = true
-        }
-        
+        self.biometricButton.isEnabled = userIsEnrolled()
         self.biometricButton.layer.borderWidth = 1.0
-        
        
+        self.emailTextField.backgroundColor = UIColor.white
         self.emailContainerView.layer.borderColor = UIColor(named: "loginTextFields")?.cgColor
-        self.emailTextField.backgroundColor = UIColor(.white)
         self.emailContainerView.layer.borderWidth = 1.0
         self.emailContainerView.layer.cornerRadius = 10.0
         
-        self.passwordTextField.layer.borderColor = UIColor(named: "loginTextFields")?.cgColor
-        self.passwordTextField.backgroundColor = UIColor(.white)
+        self.passwordTextField.backgroundColor = UIColor.white
+        self.passwordContainerView.layer.borderColor = UIColor(named: "loginTextFields")?.cgColor
         self.passwordContainerView.layer.borderWidth = 1.0
         self.passwordContainerView.layer.cornerRadius = 10.0
         
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(named: "loginTextFields") ?? Color.gray
+            .foregroundColor: UIColor(named: "loginTextFields") ?? UIColor.gray
         ]
         
         let emailTextFieldAttributedText = NSAttributedString(string: "Email", attributes: attributes)
@@ -60,15 +54,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func eyeImageTapped(_ sender: Any) {
-        toggleEyeImage()
-    }
-    
-    func toggleEyeImage() {
         passwordTextField.isSecureTextEntry.toggle()
         let image = passwordTextField.isSecureTextEntry ? UIImage(systemName: "eye.fill") : UIImage(systemName: "eye.slash.fill")
         self.eyeImage.setImage(image, for: .normal)
-       
+        
     }
+    
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         if emailTextField.text == "" {
@@ -104,7 +95,7 @@ class ViewController: UIViewController {
         
     }
     
-    func isEmailValid() -> Bool{
+    func isEmailValid() -> Bool {
         let email = NSPredicate(format: "SELF MATCHES %@", "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$")
         return email.evaluate(with: self.emailTextField.text)
     }
