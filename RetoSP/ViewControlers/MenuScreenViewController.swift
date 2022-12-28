@@ -32,9 +32,6 @@ class MenuScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        appearanceMode = osTheme.rawValue
-        appearanceText = appearanceMode == 1 ? "nocturno" : "día"
-        setupAppearanceText(appearanceText)
         
     }
     
@@ -57,6 +54,12 @@ class MenuScreenViewController: UIViewController {
         self.locateOfficesScrollView.layer.cornerRadius = 10.0
         self.locateOfficesScrollView.layer.borderColor = UIColor(named: "offices")?.cgColor
         self.locateOfficesScrollView.layer.borderWidth = 1.0
+        
+        appearanceMode = osTheme.rawValue
+        appearanceText = appearanceMode == 1 ? "nocturno" : "día"
+        mainMenu.backgroundColor = UIColor(named: "background")
+        mainMenu.textColor = UIColor(named: "default") ?? .label
+        setupAppearanceText(appearanceText)
     }
     
     @IBAction func sendDocumentsTapped(_ sender: Any) {
@@ -85,7 +88,6 @@ class MenuScreenViewController: UIViewController {
                 self.locateOfficesTapped(self)
             case 3:
                 self.setAppearance()
-                
             case 4:
                 print("Modo inglés seleccionado")
             default:
@@ -100,14 +102,18 @@ class MenuScreenViewController: UIViewController {
         if self.appearanceMode == 1 {
             self.view.overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.tintColor = UIColor.white
+            mainMenu.backgroundColor = UIColor(named: "mainMenu")
+            mainMenu.textColor = UIColor.white
             UIApplication.shared.statusBarStyle = .lightContent
             self.setupAppearanceText("día")
             self.appearanceMode = 2
             
+            
         } else if self.appearanceMode == 2 {
             self.view.overrideUserInterfaceStyle = .light
+            mainMenu.backgroundColor = UIColor.white
+            mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
             self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
-            self.setNeedsStatusBarAppearanceUpdate()
             UIApplication.shared.statusBarStyle = .darkContent
             self.setupAppearanceText("nocturno")
             self.appearanceMode = 1
