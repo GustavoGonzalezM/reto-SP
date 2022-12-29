@@ -7,5 +7,6 @@ target 'RetoSP' do
 
   # Pods for RetoSP
 pod 'DropDown'
+pod 'NVActivityIndicatorView'
 
 end

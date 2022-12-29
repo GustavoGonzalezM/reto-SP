@@ -7,6 +7,7 @@
 
 import UIKit
 import LocalAuthentication
+import NVActivityIndicatorView
 
 class ViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var eyeImage: UIButton!
     
     var networking = NetworkingProvider()
+    let loading = NVActivityIndicatorView(frame: .zero, type: .lineSpinFadeLoader, color: UIColor(named: "default"), padding: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +54,15 @@ class ViewController: UIViewController {
         let passwordTextFieldAttributedText = NSAttributedString(string: "Password", attributes: attributes)
         self.passwordTextField.attributedPlaceholder = passwordTextFieldAttributedText
         
+        loading.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(loading)
+        NSLayoutConstraint.activate([
+            loading.widthAnchor.constraint(equalToConstant: 50),
+            loading.heightAnchor.constraint(equalToConstant: 50),
+            loading.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loading.topAnchor.constraint(equalTo: biometricButton.bottomAnchor)
+        ])
+        
     }
     
     @IBAction func eyeImageTapped(_ sender: Any) {
@@ -70,6 +81,7 @@ class ViewController: UIViewController {
         } else if isEmailValid() == false {
             generateAlert(title: "Error", message: "El email no es válido")
         } else {
+            loading.startAnimating()
             networking.login(user: emailTextField.text!, password: passwordTextField.text!) { user in
                 DispatchQueue.main.async {
                     if user.acceso == true {
@@ -80,11 +92,13 @@ class ViewController: UIViewController {
                     } else {
                         self.generateAlert(title: "Error", message: "Usuario o contraseña incorrectos\nIntente de nuevo")
                     }
+                    self.loading.stopAnimating()
                 }
             } failure: { error in
                 DispatchQueue.main.async {
                     print(error!.localizedDescription)
                     self.generateAlert(title: "Error", message: "Error al conectar con el servidor\nInténtelo de nuevo más tarde")
+                    self.loading.stopAnimating()
                 }
             }
         }
@@ -106,7 +120,6 @@ class ViewController: UIViewController {
                         self?.present(alert, animated: true)
                         return
                     }
-                    //Show oter screen
                     // Success
                     let viewController = self?.storyboard?.instantiateViewController(withIdentifier: "MenuScreenViewController") as! MenuScreenViewController
                     self?.navigationController?.pushViewController(viewController,                                   animated: true)
