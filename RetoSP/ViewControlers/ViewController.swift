@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class ViewController: UIViewController {
     
@@ -90,8 +91,38 @@ class ViewController: UIViewController {
     }
     
     @IBAction func biometricButtonTapped(_ sender: Any) {
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MenuScreenViewController") as! MenuScreenViewController
-        self.navigationController?.pushViewController(viewController, animated: true)
+        let context = LAContext()
+        var error: NSError? = nil
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Por favor autorizar con touch id!"
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] success, error in
+                DispatchQueue.main.async {
+                    guard success, error == nil else {
+                        //failed
+                        let alert = UIAlertController(title: "Falla de autenticación", message: "Intenta nuevamente", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Aceptar",
+                                                      style: .cancel,
+                                                      handler: nil))
+                        self?.present(alert, animated: true)
+                        return
+                    }
+                    //Show oter screen
+                    // Success
+                    let viewController = self?.storyboard?.instantiateViewController(withIdentifier: "MenuScreenViewController") as! MenuScreenViewController
+                    self?.navigationController?.pushViewController(viewController,                                   animated: true)
+                }
+                
+            }
+        }
+        else {
+            // Can not use
+            let alert = UIAlertController(title: "No disponible", message: "Tu no puedes usar esta característica", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Aceptar",
+                                          style: .cancel,
+                                          handler: nil))
+            present(alert, animated: true)
+        }
+        
         
     }
     
