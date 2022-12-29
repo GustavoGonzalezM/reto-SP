@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var eyeImage: UIButton!
     
     var networking = NetworkingProvider()
-    let loading = NVActivityIndicatorView(frame: .zero, type: .lineSpinFadeLoader, color: UIColor(named: "default"), padding: 0)
+    let loading = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: UIColor(named: "default"), padding: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
