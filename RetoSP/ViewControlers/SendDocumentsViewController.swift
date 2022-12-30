@@ -11,7 +11,8 @@ import DropDown
 class SendDocumentsViewController: UIViewController {
 
     @IBOutlet weak var selectDocument: UIView!
-    let menu: DropDown = {
+    
+    let idTypeMenu: DropDown = {
         let menu = DropDown()
         menu.dataSource = [
         "Cédula",
@@ -23,19 +24,64 @@ class SendDocumentsViewController: UIViewController {
         return menu
     }()
     
+    let cityTypeMenu: DropDown = {
+        let menu = DropDown()
+        menu.dataSource = [
+        "Bogotá",
+        "Medellín",
+        "Lima",
+        "Panamá",
+        "México",
+        "New Jersey",
+        "Santiago de Chile"
+        ]
+        
+        return menu
+    }()
+    
+    let attachmentTypeMenu: DropDown = {
+        let menu = DropDown()
+        menu.dataSource = [
+        "Incapacidad",
+        "Factura",
+        "Otro"
+        ]
+        
+        return menu
+    }()
     
     @IBOutlet weak var documentTypeLabel: UILabel!
+    @IBOutlet weak var cityLabel: UIButton!
+    @IBOutlet weak var attachmentLabel: UIButton!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         selectDocument.setOnClickListener {
-            self.menu.show()
+            self.idTypeMenu.show()
         }
-        menu.anchorView = selectDocument
-        menu.selectionAction = { _, selected in
+        idTypeMenu.anchorView = selectDocument
+        idTypeMenu.selectionAction = { _, selected in
             self.documentTypeLabel.text = selected
         }
     }
+    
+    @IBAction func selectCityTapped(_ sender: Any) {
+        self.cityTypeMenu.show()
+        cityTypeMenu.anchorView = cityLabel
+        cityTypeMenu.selectionAction = { _, selected in
+            self.cityLabel.setTitle(selected, for: .normal)
+        }
+    }
+    
+    @IBAction func attachmentTypeTapped(_ sender: Any) {
+        self.attachmentTypeMenu.show()
+        attachmentTypeMenu.anchorView = attachmentLabel
+        attachmentTypeMenu.selectionAction = { _, selected in
+            self.attachmentLabel.setTitle(selected, for: .normal)
+        }
+    }
+    
     
 }
 
@@ -45,7 +91,7 @@ class ClickListener: UITapGestureRecognizer {
 
 extension UIView {
     
-    func setOnClickListener(action :@escaping () -> Void){
+    func setOnClickListener(action :@escaping () -> Void) {
         let tapRecognizer = ClickListener(target: self, action: #selector(onViewClicked(sender:)))
         tapRecognizer.onClick = action
         self.addGestureRecognizer(tapRecognizer)
