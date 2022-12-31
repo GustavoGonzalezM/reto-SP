@@ -9,7 +9,7 @@ import UIKit
 import LocalAuthentication
 import NVActivityIndicatorView
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var logoImage: UIImageView!
     @IBOutlet weak var label: UILabel!

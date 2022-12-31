@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Permitir tomar fotos</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Permitir acceso a la galería</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Autorizar con FaceID</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>

@@ -13,5 +13,5 @@ struct User: Codable {
     let apellido: String?
     let acceso: Bool
     let admin: Bool?
-    let email: String?
+    var email: String?
 }

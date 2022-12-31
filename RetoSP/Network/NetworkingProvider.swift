@@ -27,8 +27,9 @@ final class NetworkingProvider {
             }
             
             do {
-                let decodedData = try JSONDecoder().decode(User.self, from: data)
+                var decodedData = try JSONDecoder().decode(User.self, from: data)
                 if decodedData.acceso {
+                    decodedData.email = user
                     UserDefaults.standard.set(true, forKey: "enrolled")
                     UserDefaults.standard.storeCodable(decodedData, key: "user")
                 }
@@ -40,4 +41,31 @@ final class NetworkingProvider {
             }
         }.resume()
     }
+    
+    func getOffices(success: @escaping (_ sophos: Sophos) -> (), failure: @escaping (_ error: Error?) -> ()) {
+        
+        guard let url = URL(string: "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Oficinas") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error en data")
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode(Sophos.self, from: data)
+                
+                success(decodedData)
+                
+            } catch {
+                print(error.localizedDescription)
+                failure(error)
+            }
+        }.resume()
+        
+    }
 }
+

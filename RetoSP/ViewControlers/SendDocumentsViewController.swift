@@ -8,9 +8,24 @@
 import UIKit
 import DropDown
 
-class SendDocumentsViewController: UIViewController {
+class SendDocumentsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var selectDocument: UIView!
+    @IBOutlet weak var selectImage: UIButton!
+    @IBOutlet weak var documentTypeLabel: UILabel!
+    @IBOutlet weak var cityLabel: UIButton!
+    @IBOutlet weak var attachmentLabel: UIButton!
+    @IBOutlet weak var imagePicked: UIImageView!
+    @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var userLastName: UITextField!
+    @IBOutlet weak var userEmail: UITextField!
+    @IBOutlet weak var userDocumentNumber: UITextField!
+    @IBOutlet weak var sendButton: UIButton!
+    
+    var networking = NetworkingProvider()
+    let imagePicker = UIImagePickerController()
+    let user: User = User(id: nil, nombre: nil, apellido: nil, acceso: true, admin: nil, email: nil)
+    var missingFields = [String]()
     
     let idTypeMenu: DropDown = {
         let menu = DropDown()
@@ -26,16 +41,6 @@ class SendDocumentsViewController: UIViewController {
     
     let cityTypeMenu: DropDown = {
         let menu = DropDown()
-        menu.dataSource = [
-        "Bogotá",
-        "Medellín",
-        "Lima",
-        "Panamá",
-        "México",
-        "New Jersey",
-        "Santiago de Chile"
-        ]
-        
         return menu
     }()
     
@@ -49,11 +54,6 @@ class SendDocumentsViewController: UIViewController {
         
         return menu
     }()
-    
-    @IBOutlet weak var documentTypeLabel: UILabel!
-    @IBOutlet weak var cityLabel: UIButton!
-    @IBOutlet weak var attachmentLabel: UIButton!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +63,29 @@ class SendDocumentsViewController: UIViewController {
         idTypeMenu.anchorView = selectDocument
         idTypeMenu.selectionAction = { _, selected in
             self.documentTypeLabel.text = selected
+        }
+        loadOffices()
+        imagePicker.delegate = self
+        guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
+        userName.text = user.nombre
+        userLastName.text = user.apellido
+        userEmail.text = user.email
+        
+    }
+    
+    func loadOffices() {
+        networking.getOffices() { sophos in
+            DispatchQueue.main.async {
+                sophos.offices.forEach { office in
+                    self.cityTypeMenu.dataSource.append(office.ciudad)
+                }
+            }
+        } failure: { error in
+            DispatchQueue.main.async {
+                print(error!.localizedDescription)
+                self.generateAlert(title: "Error", message: "Error al conectar con el servidor\nInténtelo de nuevo más tarde")
+                
+            }
         }
     }
     
@@ -82,6 +105,92 @@ class SendDocumentsViewController: UIViewController {
         }
     }
     
+    @IBAction func selectImageTapped(_ sender: Any) {
+        let alert = UIAlertController(title: "Seleccionar", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Tomar foto", style: .default){ _ in
+            self.imagePicker.allowsEditing = false
+            self.imagePicker.sourceType = .camera
+            
+            self.present(self.imagePicker, animated: true, completion: nil)
+        })
+        alert.addAction(UIAlertAction(title: "Cargar imagen de la galería", style: .default){ _ in
+            self.imagePicker.allowsEditing = false
+            self.imagePicker.sourceType = .photoLibrary
+            
+            self.present(self.imagePicker, animated: true, completion: nil)
+        })
+        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
+        self.present(alert, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let img = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        self.selectImage.setImage(UIImage(), for: .normal)
+        self.imagePicked.image = img
+        
+        self.dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true)
+    }
+    
+    func generateAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true)
+    }
+    
+    @IBAction func sendButtonTapped(_ sender: Any) {
+        if validateEmtyFields() {
+            
+            
+        } else {
+            let missingFieldsResume = missingFields.joined(separator: "\n")
+            let alert = UIAlertController(title: "Verificar", message: "Faltan:\n \(missingFieldsResume)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Aceptar", style: .default))
+            self.present(alert, animated: true)
+        }
+        
+    }
+    
+    func validateEmtyFields() -> Bool {
+        var result: Int = 0
+        missingFields.removeAll()
+        if self.imagePicked.image == nil {
+            result += 1
+            missingFields.append("Escoger imagen")
+        }
+        if !idTypeMenu.dataSource.contains(documentTypeLabel.text ?? "") {
+            result += 1
+            missingFields.append("Tipo de documento")
+        }
+        if userDocumentNumber.text == "" {
+            result += 1
+            missingFields.append("Número de documento")
+        }
+        if userName.text == "" {
+            result += 1
+            missingFields.append("Nombres")
+        }
+        if userLastName.text == "" {
+            result += 1
+            missingFields.append("Apellidos")
+        }
+        if userEmail.text == "" {
+            result += 1
+            missingFields.append("Email")
+        }
+        if !cityTypeMenu.dataSource.contains(cityLabel.titleLabel?.text ?? "") {
+            result += 1
+            missingFields.append("Escoger ciudad")
+        }
+        if !attachmentTypeMenu.dataSource.contains(attachmentLabel.titleLabel?.text ?? "") {
+            result += 1
+            missingFields.append("Escoger tipo de adjunto")
+        }
+        return result == 0
+    }
     
 }
 
