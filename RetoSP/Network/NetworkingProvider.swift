@@ -67,5 +67,27 @@ final class NetworkingProvider {
         }.resume()
         
     }
+    
+    func uploadDocument(newDocument: NewDocument, completion: @escaping (Bool) -> ()) {
+        guard let url = URL(string: "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Documentos") else { return }
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONEncoder().encode(newDocument)
+        
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else { return }
+            do {
+                let response = try JSONDecoder().decode(NewDocumentResponse.self, from: data)
+                if response.response {
+                    completion(true)
+                }
+            } catch {
+                print(response)
+                completion(false)
+            }
+        }.resume()
+    }
 }
 

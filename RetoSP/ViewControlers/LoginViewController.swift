@@ -144,7 +144,7 @@ class LoginViewController: UIViewController {
         return email.evaluate(with: self.emailTextField.text)
     }
     
-    func generateAlert(title: String, message: String){
+    func generateAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
         self.present(alert, animated: true)

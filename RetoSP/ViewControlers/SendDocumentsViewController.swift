@@ -24,6 +24,7 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     
     var networking = NetworkingProvider()
     let imagePicker = UIImagePickerController()
+    var imageInBase64 = String()
     let user: User = User(id: nil, nombre: nil, apellido: nil, acceso: true, admin: nil, email: nil)
     var missingFields = [String]()
     
@@ -127,7 +128,9 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         let img = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         self.selectImage.setImage(UIImage(), for: .normal)
         self.imagePicked.image = img
-        
+        if let img = img?.convertToBase64 {
+            self.imageInBase64 = img
+        }
         self.dismiss(animated: true)
     }
     
@@ -142,9 +145,23 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func sendButtonTapped(_ sender: Any) {
-        if validateEmtyFields() {
-            
-            
+        if validateEmptyFields() {
+            print(imageInBase64)
+            let newDocument: NewDocument = NewDocument(tipoId: documentTypeLabel.text!,
+                                                       identificacion: userDocumentNumber.text!,
+                                                       nombre: userName.text!,
+                                                       apellido: userLastName.text!,
+                                                       ciudad: (cityLabel.titleLabel?.text)!,
+                                                       correo: userEmail.text!,
+                                                       tipoAdjunto: (attachmentLabel.titleLabel?.text)!,
+                                                       adjunto: imageInBase64)
+            networking.uploadDocument(newDocument: newDocument) { response in
+                if response {
+                    print("OK")
+                } else {
+                    print("falló")
+                }
+            }
         } else {
             let missingFieldsResume = missingFields.joined(separator: "\n")
             let alert = UIAlertController(title: "Verificar", message: "Faltan:\n \(missingFieldsResume)", preferredStyle: .alert)
@@ -154,7 +171,7 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         
     }
     
-    func validateEmtyFields() -> Bool {
+    func validateEmptyFields() -> Bool {
         var result: Int = 0
         missingFields.removeAll()
         if self.imagePicked.image == nil {
@@ -181,6 +198,10 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
             result += 1
             missingFields.append("Email")
         }
+        if !isEmailValid() {
+            result += 1
+            missingFields.append("Email no válido")
+        }
         if !cityTypeMenu.dataSource.contains(cityLabel.titleLabel?.text ?? "") {
             result += 1
             missingFields.append("Escoger ciudad")
@@ -190,6 +211,11 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
             missingFields.append("Escoger tipo de adjunto")
         }
         return result == 0
+    }
+    
+    func isEmailValid() -> Bool {
+        let email = NSPredicate(format: "SELF MATCHES %@", "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$")
+        return email.evaluate(with: self.userEmail.text)
     }
     
 }
