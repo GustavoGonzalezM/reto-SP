@@ -11,8 +11,6 @@ import Foundation
 
 final class NetworkingProvider {
     
-    static let shared = NetworkingProvider()
-    
     func login(user: String, password: String, success: @escaping (_ user: User) -> (), failure: @escaping (_ error: Error?) -> () ) {
         
         guard let url = URL(string: "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Usuarios?idUsuario=\(user)&clave=\(password)") else { return }
@@ -84,10 +82,64 @@ final class NetworkingProvider {
                     completion(true)
                 }
             } catch {
-                print(response)
                 completion(false)
             }
         }.resume()
     }
+    
+    func getDocuments(success: @escaping (_ documents: Documents) -> (), failure: @escaping (_ error: Error?) -> ()) {
+        guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
+        guard let url = URL(string: "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Documentos?correo=victor.sanchez@gruposys.co") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error en data")
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode(Documents.self, from: data)
+                success(decodedData)
+                
+            } catch {
+                print(error.localizedDescription)
+                failure(error)
+            }
+        }.resume()
+        
+    }
+    
+    func viewDocument(documentId: String, success: @escaping (_ document: ViewDocument) -> (), failure: @escaping (_ error: Error?) -> ()) {
+        guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
+        guard let url = URL(string: "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Documentos?correo=victor.sanchez@gruposys.co&&idRegistro=\(documentId)") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error en data")
+                return
+            }
+            
+            do {
+                let decodedData = try JSONDecoder().decode(ViewDocument.self, from: data)
+                if decodedData.items?.count == 0 {
+                    failure(error)
+                } else {
+                    success(decodedData)
+                }
+                
+            } catch {
+                print(error.localizedDescription)
+                failure(error)
+            }
+        }.resume()
+        
+    }
+    
 }
 

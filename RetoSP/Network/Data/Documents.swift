@@ -8,24 +8,24 @@
 import Foundation
 
 struct NewDocument: Codable {
-    let tipoId: String
-    let identificacion: String
-    let nombre: String
-    let apellido: String
-    let ciudad: String
-    let correo: String
-    let tipoAdjunto: String
-    let adjunto: String
+    let idType: String
+    let id: String
+    let name: String
+    let lastname: String
+    let city: String
+    let email: String
+    let attachmentType: String
+    let attachment: String
     
     enum CodingKeys: String, CodingKey {
-        case tipoId = "TipoId"
-        case identificacion = "Identificacion"
-        case nombre = "Nombre"
-        case apellido = "Apellido"
-        case ciudad = "Ciudad"
-        case correo = "Correo"
-        case tipoAdjunto = "TipoAdjunto"
-        case adjunto = "Adjunto"
+        case idType = "TipoId"
+        case id = "Identificacion"
+        case name = "Nombre"
+        case lastname = "Apellido"
+        case city = "Ciudad"
+        case email = "Correo"
+        case attachmentType = "TipoAdjunto"
+        case attachment = "Adjunto"
     }
 }
 
@@ -37,3 +37,60 @@ struct NewDocumentResponse: Codable {
     }
 }
 
+struct Documents: Codable {
+    let items: [Document]?
+
+    enum CodingKeys: String, CodingKey {
+        case items = "Items"
+    }
+}
+
+struct Document: Codable {
+    let documentId: String?
+    let date: String?
+    let attachmentType: String?
+    let name: String?
+    let lastname: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case documentId = "IdRegistro"
+        case date = "Fecha"
+        case attachmentType = "TipoAdjunto"
+        case name = "Nombre"
+        case lastname = "Apellido"
+    }
+}
+
+struct ViewDocument: Codable {
+    let items: [ViewDocumentImage]?
+    
+    enum CodingKeys: String, CodingKey {
+        case items = "Items"
+    }
+}
+
+struct ViewDocumentImage: Codable {
+    let city: String?
+    let date: String?
+    let attachmentType: String?
+    let name: String?
+    let lastname: String?
+    let identification: String?
+    let documentId: String?
+    let idType: String?
+    let email: String?
+    let attachment: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case city = "Ciudad"
+        case date = "Fecha"
+        case attachmentType = "TipoAdjunto"
+        case name = "Nombre"
+        case lastname = "Apellido"
+        case identification = "Identificacion"
+        case documentId = "IdRegistro"
+        case idType = "TipoId"
+        case email = "Correo"
+        case attachment = "Adjunto"
+    }
+}

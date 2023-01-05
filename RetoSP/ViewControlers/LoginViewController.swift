@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordContainerView: UIView!
     @IBOutlet weak var eyeImage: UIButton!
     
-    var networking = NetworkingProvider()
+    let networking = NetworkingProvider()
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: UIColor(named: "default"), padding: 0)
     
     override func viewDidLoad() {
@@ -30,6 +30,7 @@ class LoginViewController: UIViewController {
     }
     
     func setupUI() {
+        self.hideKeyboardWhenTappedOutside()
         self.biometricButton.layer.cornerRadius = 10.0
         self.biometricButton.isEnabled = userIsEnrolled()
         self.biometricButton.layer.borderWidth = 1.0

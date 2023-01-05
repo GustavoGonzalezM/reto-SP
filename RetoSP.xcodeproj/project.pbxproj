@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		841C8693295B54BF003C506B /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841C8692295B54BF003C506B /* MainMenu.swift */; };
+		11588B482965C22600941D32 /* ViewDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11588B472965C22600941D32 /* ViewDocumentViewController.swift */; };
 		84409CD02932C98900486A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84409CCF2932C98900486A22 /* AppDelegate.swift */; };
 		84409CD22932C98900486A22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84409CD12932C98900486A22 /* SceneDelegate.swift */; };
 		84409CD42932C98900486A22 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84409CD32932C98900486A22 /* LoginViewController.swift */; };
@@ -24,13 +24,15 @@
 		84BF15B729385A3B001FE995 /* NetworkingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF15B629385A3B001FE995 /* NetworkingProvider.swift */; };
 		84BF15BE2938614B001FE995 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF15BD2938614B001FE995 /* User.swift */; };
 		84BF15C2293D206B001FE995 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF15C1293D206B001FE995 /* UserDefaults+Extensions.swift */; };
+		84C1281B29637F3D001CBFAA /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1281A29637F3D001CBFAA /* UIViewController.swift */; };
+		84C1281E296391C6001CBFAA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1281C296391C6001CBFAA /* TableViewCell.swift */; };
 		CF4119F70439B352EE33BAA7 /* Pods_RetoSP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CEA955E329A0E3DD238C2A0 /* Pods_RetoSP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11588B472965C22600941D32 /* ViewDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDocumentViewController.swift; sourceTree = "<group>"; };
 		3CEA955E329A0E3DD238C2A0 /* Pods_RetoSP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RetoSP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA877331B4AEBF69065D4B8 /* Pods-RetoSP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RetoSP.release.xcconfig"; path = "Target Support Files/Pods-RetoSP/Pods-RetoSP.release.xcconfig"; sourceTree = "<group>"; };
-		841C8692295B54BF003C506B /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		84409CCC2932C98900486A22 /* RetoSP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetoSP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84409CCF2932C98900486A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84409CD12932C98900486A22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		84BF15B629385A3B001FE995 /* NetworkingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingProvider.swift; sourceTree = "<group>"; };
 		84BF15BD2938614B001FE995 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		84BF15C1293D206B001FE995 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
+		84C1281A29637F3D001CBFAA /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		84C1281C296391C6001CBFAA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		DD7560EA7DB5CFF56BC42BC0 /* Pods-RetoSP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RetoSP.debug.xcconfig"; path = "Target Support Files/Pods-RetoSP/Pods-RetoSP.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +119,8 @@
 				8462DF192938349900B01EB8 /* SendDocumentsViewController.swift */,
 				8462DF1B293834BD00B01EB8 /* DisplayDocumentsViewController.swift */,
 				8462DF1D293834DC00B01EB8 /* LocateOfficesViewController.swift */,
+				84C1281C296391C6001CBFAA /* TableViewCell.swift */,
+				11588B472965C22600941D32 /* ViewDocumentViewController.swift */,
 			);
 			path = ViewControlers;
 			sourceTree = "<group>";
@@ -142,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				84BF15C0293D204F001FE995 /* Extensions */,
-				841C8692295B54BF003C506B /* MainMenu.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -152,6 +157,7 @@
 			children = (
 				84BF15C1293D206B001FE995 /* UserDefaults+Extensions.swift */,
 				844F5F95296074D10077B323 /* ImageView.swift */,
+				84C1281A29637F3D001CBFAA /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -279,7 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				841C8693295B54BF003C506B /* MainMenu.swift in Sources */,
+				84C1281E296391C6001CBFAA /* TableViewCell.swift in Sources */,
 				8462DF1E293834DC00B01EB8 /* LocateOfficesViewController.swift in Sources */,
 				84409CD42932C98900486A22 /* LoginViewController.swift in Sources */,
 				8462DF1C293834BD00B01EB8 /* DisplayDocumentsViewController.swift in Sources */,
@@ -290,9 +296,11 @@
 				844F5F9829608ABE0077B323 /* Documents.swift in Sources */,
 				844F5F94295F3EB20077B323 /* Offices.swift in Sources */,
 				84409CD02932C98900486A22 /* AppDelegate.swift in Sources */,
+				11588B482965C22600941D32 /* ViewDocumentViewController.swift in Sources */,
 				8462DF1A2938349900B01EB8 /* SendDocumentsViewController.swift in Sources */,
 				84BF15C2293D206B001FE995 /* UserDefaults+Extensions.swift in Sources */,
 				84409CD22932C98900486A22 /* SceneDelegate.swift in Sources */,
+				84C1281B29637F3D001CBFAA /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

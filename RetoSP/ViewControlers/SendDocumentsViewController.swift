@@ -22,11 +22,25 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var userDocumentNumber: UITextField!
     @IBOutlet weak var sendButton: UIButton!
     
-    var networking = NetworkingProvider()
+    let networking = NetworkingProvider()
     let imagePicker = UIImagePickerController()
     var imageInBase64 = String()
     let user: User = User(id: nil, nombre: nil, apellido: nil, acceso: true, admin: nil, email: nil)
     var missingFields = [String]()
+    
+    var osTheme: UIUserInterfaceStyle {
+        return UIScreen.main.traitCollection.userInterfaceStyle
+    }
+    var mainMenu: DropDown = DropDown()
+    var appearanceMode: Int = 0
+    var appearanceText: String = ""
+    var menuDatasource = [
+        "Enviar documentos",
+        "Ver Documentos",
+        "Oficinas",
+        "Modo",
+        "Idioma Inglés"
+        ]
     
     let idTypeMenu: DropDown = {
         let menu = DropDown()
@@ -58,6 +72,7 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedOutside()
         selectDocument.setOnClickListener {
             self.idTypeMenu.show()
         }
@@ -72,6 +87,13 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         userLastName.text = user.apellido
         userEmail.text = user.email
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.left")
+        appearanceMode = osTheme.rawValue
+        appearanceText = appearanceMode == 1 ? "nocturno" : "día"
+        mainMenu.backgroundColor = UIColor(named: "background")
+        mainMenu.textColor = UIColor(named: "default") ?? .label
+        setupAppearanceText(appearanceText)
     }
     
     func loadOffices() {
@@ -88,6 +110,29 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
                 
             }
         }
+    }
+    
+    @objc func menu() {
+        mainMenu.anchorView = self.navigationItem.rightBarButtonItem
+        mainMenu.bottomOffset = CGPoint(x: 0, y: 30)
+        mainMenu.selectionAction = { index, _ in
+            switch index {
+            case 0:
+                print(index)
+            case 1:
+                self.performSegue(withIdentifier: "DisplayDocumentsSegue", sender: self)
+            case 2:
+                self.performSegue(withIdentifier: "LocateOfficesSegue", sender: self)
+            case 3:
+                self.setAppearance()
+            case 4:
+                print("Modo inglés seleccionado")
+            default:
+                print(index)
+            }
+        }
+        mainMenu.dataSource = menuDatasource
+        mainMenu.show()
     }
     
     @IBAction func selectCityTapped(_ sender: Any) {
@@ -147,14 +192,14 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     @IBAction func sendButtonTapped(_ sender: Any) {
         if validateEmptyFields() {
             print(imageInBase64)
-            let newDocument: NewDocument = NewDocument(tipoId: documentTypeLabel.text!,
-                                                       identificacion: userDocumentNumber.text!,
-                                                       nombre: userName.text!,
-                                                       apellido: userLastName.text!,
-                                                       ciudad: (cityLabel.titleLabel?.text)!,
-                                                       correo: userEmail.text!,
-                                                       tipoAdjunto: (attachmentLabel.titleLabel?.text)!,
-                                                       adjunto: imageInBase64)
+            let newDocument: NewDocument = NewDocument(idType: documentTypeLabel.text!,
+                                                       id: userDocumentNumber.text!,
+                                                       name: userName.text!,
+                                                       lastname: userLastName.text!,
+                                                       city: (cityLabel.titleLabel?.text)!,
+                                                       email: userEmail.text!,
+                                                       attachmentType: (attachmentLabel.titleLabel?.text)!,
+                                                       attachment: imageInBase64)
             networking.uploadDocument(newDocument: newDocument) { response in
                 if response {
                     print("OK")
@@ -218,6 +263,32 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         return email.evaluate(with: self.userEmail.text)
     }
     
+    func setAppearance() {
+        if self.appearanceMode == 1 {
+            self.view.overrideUserInterfaceStyle = .dark
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            mainMenu.backgroundColor = UIColor(named: "mainMenu")
+            mainMenu.textColor = UIColor.white
+            UIApplication.shared.statusBarStyle = .lightContent
+            self.setupAppearanceText("día")
+            self.appearanceMode = 2
+            
+            
+        } else if self.appearanceMode == 2 {
+            self.view.overrideUserInterfaceStyle = .light
+            mainMenu.backgroundColor = UIColor.white
+            mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
+            self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
+            UIApplication.shared.statusBarStyle = .darkContent
+            self.setupAppearanceText("nocturno")
+            self.appearanceMode = 1
+           
+        }
+    }
+    
+    func setupAppearanceText(_ appearance: String){
+        menuDatasource[3] = "Modo \(appearance)"
+    }
 }
 
 class ClickListener: UITapGestureRecognizer {

@@ -36,12 +36,14 @@ class MenuScreenViewController: UIViewController {
     }
     
     func setupUI(){
+        self.hideKeyboardWhenTappedOutside() 
         guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
         
         self.navigationController?.navigationBar.tintColor = UIColor(named: "default")
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: user.nombre)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.left")
         
         self.sendDocumentsScrollView.layer.cornerRadius = 10.0
         self.sendDocumentsScrollView.layer.borderColor = UIColor(named: "sendDocuments")?.cgColor
