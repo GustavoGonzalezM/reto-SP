@@ -2,7 +2,7 @@
 //  TableViewCell.swift
 //  RetoSP
 //
-//  Created by Usuario on 2/01/23.
+//  Created by Gustavo Gonzalez on 2/01/23.
 //
 
 import UIKit

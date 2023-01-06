@@ -1,0 +1,83 @@
+/* 
+  Localizable.strings
+  RetoSP
+
+  Created by Gustavo Gonzalez on 5/01/23.
+  
+*/
+
+// MARK: Alert
+"alert.dismissButton"                           =   "Ok";
+"alert.logoutTitle"                             =   "Logout";
+"alert.logoutMessage"                           =   "Are you sure you want to logout?";
+"alert.cancelButton"                            =   "Cancel";
+
+// MARK: Login
+"login.loginButton"                             =   "Login";
+"login.biometricButton"                         =   "Login with fingerprint";
+"login.error.emptyEmail"                        =   "Email can not be empty";
+"login.error.emptyPassword"                     =   "Password can not be empty";
+"login.error.invalidEmail"                      =   "Email is invalid";
+"login.error.invalidCredentials"                =   "Wrong username or password\nTry again";
+"login.error.serverError"                       =   "Error connecting with the server\nTry again later";
+"login.biometricReason"                         =   "Please authorize TouchID!";
+"login.error.biometric.authenticationTitle"     =   "Authentication failure";
+"login.error.biometric.authenticationMessage"   =   "Try again";
+"login.error.biometric.authenticationButton"    =   "Ok";
+"login.error.biometric.usageTitle"              =   "Authentication failure";
+"login.error.biometric.usageMessage"            =   "Try again";
+"login.error.biometric.usageButton"             =   "Ok";
+
+// MARK: Main Menu
+"mainMenu.sendDocuments"                        =   "Send documents";
+"mainMenu.displayDocuments"                     =   "Display documents";
+"mainMenu.offices"                              =   "Offices";
+"mainMenu.dayMode"                              =   "Day mode";
+"mainMenu.nightMode"                            =   "Night mode";
+"mainMenu.englishLanguage"                      =   "English language";
+"mainMenu.spanishLanguage"                      =   "Spanish language";
+"mainMenu.logout"                               =   "Logout";
+
+// MARK: Menu Screen
+"menuScreen.sendDocumentsLabel"                 =   "  Send documents";
+"menuScreen.displayDocumentsLabel"              =   "  Display documents";
+"menuScreen.officesLabel"                       =   "  Offices";
+"menuScreen.bannerTitleLabel"                   =   "Welcome";
+"menuScreen.bannerCaptionLabel"                 =   "These are the options that we have for you";
+
+// MARK: Send Documents
+"sendDocuments.viewTitle"                       =   "Send document";
+"sendDocuments.documentTypeLabel"               =   "ID type";
+"sendDocuments.userDocumentNumber"              =   "ID number";
+"sendDocuments.userName"                        =   "Name";
+"sendDocuments.userLastName"                    =   "Last name";
+"sendDocuments.userEmail"                       =   "Email";
+"sendDocuments.error.serverError"               =   "Error connecting with the server\nTry again later";
+"sendDocuments.idTypeMenu.idCard"               =   "ID Card";
+"sendDocuments.idTypeMenu.foreignerIdCard"      =   "Foreigner ID card";
+"sendDocuments.idTypeMenu.passport"             =   "Passport";
+"sendDocuments.idTypeMenu.youngIdCard"          =   "Young ID card";
+"sendDocuments.attachmentTypeMenu.inability"    =   "Inability";
+"sendDocuments.attachmentTypeMenu.invoice"      =   "Invoice";
+"sendDocuments.attachmentTypeMenu.other"        =   "Other";
+"sendDocuments.picture.title"                   =   "Select";
+"sendDocuments.picture.takePicture"             =   "Take a picture";
+"sendDocuments.picture.selectPicture"           =   "Select a picture from gallery";
+"sendDocuments.picture.cancel"                  =   "Cancel";
+"sendDocuments.success.messageTitle"            =   "Sent";
+"sendDocuments.success.message"                 =   "Document upload successful";
+"sendDocuments.failure.messageTitle"            =   "Error";
+"sendDocuments.failure.message"                 =   "Document upload failed\nTry again";
+"sendDocuments.submit.failureTitle"             =   "Verify";
+"sendDocuments.submit.failureMessage"           =   "Missing:\n";
+"sendDocuments.missing.pickImage"               =   "Pick an image";
+"sendDocuments.missing.idType"                  =   "ID Type";
+"sendDocuments.missing.idNumber"                =   "ID number";
+"sendDocuments.missing.name"                    =   "Name";
+"sendDocuments.missing.lastname"                =   "Lastname";
+"sendDocuments.missing.invalidEmail"            =   "Invalid email";
+"sendDocuments.missing.city"                    =   "Pick a city";
+"sendDocuments.missing.attachmentType"          =   "Pick an attachment type";
+
+// MARK: Locate offices
+"locateOffices.error.serverError"               =   "Error connecting with the server\nTry again later";

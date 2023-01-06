@@ -26,7 +26,7 @@
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" secondItem="Aax-a7-7Cx" secondAttribute="height" multiplier="52:19" id="XwK-Mp-snq"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingresa tus datos para acceder" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6D-u5-ZPw">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your info to login" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6D-u5-ZPw">
                                 <rect key="frame" x="65" y="230" width="263" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" secondItem="S6D-u5-ZPw" secondAttribute="height" multiplier="6:1" constant="180" id="FRT-91-IE0"/>
@@ -125,8 +125,7 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="280" id="9c1-iC-Hl5"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Ingresar">
-                                            <color key="baseForegroundColor" name="background"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Login">
                                             <color key="baseBackgroundColor" name="AccentColor"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -140,7 +139,7 @@
                                             <constraint firstAttribute="height" constant="40" id="sbs-YZ-e0l"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="touchid" catalog="system" title="Ingresar con huella" imagePadding="16" cornerStyle="medium">
+                                        <buttonConfiguration key="configuration" style="filled" image="touchid" catalog="system" title="Login with fingerprint" imagePadding="16" cornerStyle="medium">
                                             <backgroundConfiguration key="background">
                                                 <color key="strokeColor" name="default"/>
                                             </backgroundConfiguration>
@@ -249,12 +248,12 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="Rjl-8B-yli"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system" imagePlacement="trailing" title="Ingresar   " cornerStyle="large">
+                                        <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system" imagePlacement="trailing" title="Enter   " cornerStyle="large">
                                             <backgroundConfiguration key="background">
                                                 <color key="backgroundColor" name="sendDocumentsButtonBackground"/>
                                                 <color key="strokeColor" name="sendDocuments"/>
                                             </backgroundConfiguration>
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="10"/>
                                             <color key="baseForegroundColor" name="sendDocumentsFont"/>
                                             <color key="baseBackgroundColor" name="background"/>
                                         </buttonConfiguration>
@@ -309,12 +308,12 @@
                                             <constraint firstAttribute="height" constant="30" id="CxR-2W-F6E"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system" imagePlacement="trailing" title="Ingresar   " cornerStyle="large">
+                                        <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system" imagePlacement="trailing" title="Enter   " cornerStyle="large">
                                             <backgroundConfiguration key="background">
                                                 <color key="backgroundColor" name="displayDocumentsButtonBackground"/>
                                                 <color key="strokeColor" name="displayDocuments"/>
                                             </backgroundConfiguration>
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="10"/>
                                             <color key="baseForegroundColor" name="displayDocumentsFont"/>
                                             <color key="baseBackgroundColor" name="background"/>
                                         </buttonConfiguration>
@@ -370,12 +369,12 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="ap7-8S-tHj"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system" imagePlacement="trailing" title="Ingresar   " cornerStyle="large">
+                                        <buttonConfiguration key="configuration" style="filled" image="arrow.right" catalog="system" imagePlacement="trailing" title="Enter   " cornerStyle="large">
                                             <backgroundConfiguration key="background">
                                                 <color key="backgroundColor" name="officesButtonBackground"/>
                                                 <color key="strokeColor" name="offices"/>
                                             </backgroundConfiguration>
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="10"/>
                                             <color key="baseForegroundColor" name="officesFont"/>
                                             <color key="baseBackgroundColor" name="background"/>
                                         </buttonConfiguration>
@@ -452,16 +451,23 @@
                             <constraint firstItem="2XH-0m-rht" firstAttribute="leading" secondItem="3I3-ol-WjV" secondAttribute="leading" id="rBm-O1-put"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aZu-Cb-qxj">
-                        <barButtonItem key="backBarButtonItem" title="Regresar" id="qcE-aH-Jg6"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="aZu-Cb-qxj"/>
                     <connections>
+                        <outlet property="bannerCaptionLabel" destination="UxD-DZ-ACB" id="mdd-bV-4Ft"/>
+                        <outlet property="bannerTitleLabel" destination="qlc-xb-R1l" id="1Lh-TU-0X1"/>
+                        <outlet property="displayDocumentsButton" destination="4ii-Z9-Acf" id="r84-T0-3VT"/>
+                        <outlet property="displayDocumentsLabel" destination="SuQ-t1-rgN" id="QUF-c5-p07"/>
                         <outlet property="displayDocumentsScrollView" destination="0e0-hh-jGu" id="nc6-ug-fU9"/>
+                        <outlet property="locateOfficesButton" destination="acN-lo-bON" id="mlM-vi-MUV"/>
                         <outlet property="locateOfficesScrollView" destination="Zko-iO-qkp" id="SiG-EB-NIv"/>
+                        <outlet property="officesLabel" destination="OTK-Eh-51w" id="17R-ef-GgW"/>
+                        <outlet property="sendDocumentsButton" destination="feD-NU-cSf" id="3v9-MT-wHW"/>
+                        <outlet property="sendDocumentsLabel" destination="m6A-5F-TlV" id="Iho-9e-coK"/>
                         <outlet property="sendDocumentsScrollView" destination="Wn7-4S-Jf4" id="FFM-B7-Zl2"/>
                         <segue destination="Isd-zH-Jea" kind="show" identifier="DisplayDocumentsSegue" id="IDl-ng-4Z1"/>
                         <segue destination="no5-Wf-Nab" kind="show" identifier="LocateOfficesSegue" id="Mr2-fk-wiS"/>
                         <segue destination="qKB-ac-yl1" kind="show" identifier="SendDocumentsSegue" id="bX9-zN-Zzj"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LogoutSegue" id="pKN-D2-LAL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBK-85-j1A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -476,8 +482,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Documentos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyB-oO-omv" userLabel="Display Documents">
-                                <rect key="frame" x="144.33333333333334" y="59.000000000000007" width="104.66666666666666" height="19.333333333333336"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Documents" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyB-oO-omv" userLabel="Display Documents">
+                                <rect key="frame" x="149.33333333333334" y="59.000000000000007" width="94.333333333333343" height="19.333333333333336"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -529,14 +535,13 @@
                             <constraint firstItem="Uk2-mZ-ZPs" firstAttribute="leading" secondItem="8Uv-SB-kpS" secondAttribute="leading" id="zs6-eh-lvd"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="31g-9I-RMp">
-                        <barButtonItem key="backBarButtonItem" title="Regresar" id="XKh-by-u0T"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="31g-9I-RMp"/>
                     <connections>
                         <outlet property="tableView" destination="Uk2-mZ-ZPs" id="LGF-2D-Oer"/>
                         <segue destination="no5-Wf-Nab" kind="show" identifier="LocateOfficesSegue" id="ebz-c4-jfr"/>
                         <segue destination="qKB-ac-yl1" kind="show" identifier="SendDocumentsSegue" id="9iX-wq-CXd"/>
                         <segue destination="bRL-cC-b9P" kind="show" identifier="ViewDocument" id="N5X-Xa-XnB"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LogoutSegue" id="GsT-3q-bFp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZl-M9-5hO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -551,8 +556,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oficinas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3i-bC-VHJ" userLabel="Offices">
-                                <rect key="frame" x="162" y="59" width="69" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3i-bC-VHJ" userLabel="Offices">
+                                <rect key="frame" x="166.33333333333334" y="59" width="60.333333333333343" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="16"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -577,6 +582,7 @@
                         <outlet property="mapView" destination="ZbA-6q-TKz" id="GuT-wp-Vou"/>
                         <segue destination="qKB-ac-yl1" kind="show" identifier="SendDocumentsSegue" id="XCB-ZB-APO"/>
                         <segue destination="Isd-zH-Jea" kind="show" identifier="DisplayDocumentsSegue" id="FZn-T6-Ty6"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LogoutSegue" id="6Uq-eS-Jjp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K3D-xn-hzn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -621,8 +627,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Envío de documentación" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLs-23-5ea" userLabel="Send Documents">
-                                <rect key="frame" x="5" y="63.999999999999993" width="250" height="19.666666666666664"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Envío de documentación" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cLs-23-5ea" userLabel="Send Documents">
+                                <rect key="frame" x="20" y="63.999999999999993" width="250" height="19.666666666666664"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="1Ea-da-LnD"/>
@@ -673,7 +679,7 @@
                                         <rect key="frame" x="40" y="0.0" width="305" height="28"/>
                                         <color key="backgroundColor" name="background"/>
                                         <color key="tintColor" red="0.17254814509999999" green="0.140445292" blue="0.17255249619999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                     </textField>
                                 </subviews>
@@ -766,8 +772,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="308" height="28"/>
                                         <color key="backgroundColor" name="background"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Ciudad" subtitle="" titleAlignment="leading">
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="City" subtitle="" titleAlignment="leading">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                             <color key="baseForegroundColor" systemColor="labelColor"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -796,10 +802,10 @@
                                     <constraint firstAttribute="height" constant="40" id="Zbe-Xg-hBD"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Documento" imagePadding="2" cornerStyle="large" titleAlignment="leading">
+                                <buttonConfiguration key="configuration" style="gray" title="Document" imagePadding="2" cornerStyle="large" titleAlignment="leading">
                                     <imageReference key="image" image="icloud.and.arrow.up" catalog="system" symbolScale="small"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" weight="heavy"/>
-                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="12"/>
+                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="14"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" name="sendDocuments"/>
                                 </buttonConfiguration>
@@ -844,8 +850,8 @@
                                         <rect key="frame" x="0.0" y="0.0" width="308" height="28"/>
                                         <color key="backgroundColor" name="background"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Tipo de Adjunto" subtitle="" titleAlignment="leading">
-                                            <fontDescription key="titleFontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Attachment type" subtitle="" titleAlignment="leading">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="14"/>
                                             <color key="baseForegroundColor" systemColor="labelColor"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -873,8 +879,8 @@
                                     <constraint firstAttribute="height" constant="40" id="e2c-kQ-z8d"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="Enviar" cornerStyle="large" titleAlignment="leading">
-                                    <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="16"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Send" cornerStyle="large" titleAlignment="leading">
+                                    <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="18"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" name="sendDocuments"/>
                                 </buttonConfiguration>
@@ -929,7 +935,7 @@
                             <constraint firstItem="huy-Xx-Uis" firstAttribute="trailing" secondItem="Wm4-xY-f0l" secondAttribute="trailing" constant="20" id="Ghp-Sw-inP"/>
                             <constraint firstItem="huy-Xx-Uis" firstAttribute="trailing" secondItem="aYn-ul-HLi" secondAttribute="trailing" constant="20" id="GmB-CT-RdE"/>
                             <constraint firstItem="FIZ-aU-p0F" firstAttribute="leading" secondItem="huy-Xx-Uis" secondAttribute="leading" constant="20" id="H3f-76-PRY"/>
-                            <constraint firstItem="cLs-23-5ea" firstAttribute="leading" secondItem="huy-Xx-Uis" secondAttribute="leading" constant="5" id="H9N-o7-pld"/>
+                            <constraint firstItem="cLs-23-5ea" firstAttribute="leading" secondItem="huy-Xx-Uis" secondAttribute="leading" constant="20" id="H9N-o7-pld"/>
                             <constraint firstItem="uHr-Xg-In9" firstAttribute="leading" secondItem="huy-Xx-Uis" secondAttribute="leading" constant="20" id="Hf6-4R-SSO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wEE-Go-S3P" secondAttribute="trailing" constant="4" id="I3p-ul-tmC"/>
                             <constraint firstItem="ps7-wz-5bF" firstAttribute="leading" secondItem="w9g-43-ZlT" secondAttribute="leadingMargin" constant="4" id="IZe-lr-nb3"/>
@@ -951,13 +957,13 @@
                             <constraint firstItem="4xy-0a-hV7" firstAttribute="top" secondItem="cLs-23-5ea" secondAttribute="bottom" constant="10" id="Xop-Po-pdC"/>
                             <constraint firstItem="Wm4-xY-f0l" firstAttribute="top" secondItem="HRO-rO-ote" secondAttribute="bottom" constant="9" id="ZR1-1Y-YYP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4jH-6w-hNV" secondAttribute="trailing" constant="4" id="biB-OE-r3t"/>
-                            <constraint firstItem="cLs-23-5ea" firstAttribute="leading" secondItem="huy-Xx-Uis" secondAttribute="leading" constant="5" id="dfb-Ko-Q8k"/>
+                            <constraint firstItem="cLs-23-5ea" firstAttribute="leading" secondItem="huy-Xx-Uis" secondAttribute="leading" constant="20" id="dfb-Ko-Q8k"/>
                             <constraint firstItem="9Ep-Va-788" firstAttribute="leading" secondItem="huy-Xx-Uis" secondAttribute="leading" constant="20" id="dqH-Ub-Qat"/>
                             <constraint firstItem="ps7-wz-5bF" firstAttribute="top" secondItem="uHr-Xg-In9" secondAttribute="bottom" constant="10" id="hhd-HS-nXU"/>
                             <constraint firstItem="huy-Xx-Uis" firstAttribute="trailing" secondItem="HRO-rO-ote" secondAttribute="trailing" constant="20" id="i4i-FI-3mn"/>
                             <constraint firstItem="TfP-2z-oPy" firstAttribute="top" secondItem="4jH-6w-hNV" secondAttribute="bottom" constant="10" id="jG6-wO-ezn"/>
                             <constraint firstItem="huy-Xx-Uis" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W84-BN-uB4" secondAttribute="trailing" symbolic="YES" id="kBD-5F-4N6"/>
-                            <constraint firstItem="cLs-23-5ea" firstAttribute="leading" secondItem="huy-Xx-Uis" secondAttribute="leading" constant="5" id="mOa-m5-h34"/>
+                            <constraint firstItem="cLs-23-5ea" firstAttribute="leading" secondItem="huy-Xx-Uis" secondAttribute="leading" constant="20" id="mOa-m5-h34"/>
                             <constraint firstItem="Wm4-xY-f0l" firstAttribute="leading" secondItem="huy-Xx-Uis" secondAttribute="leading" constant="20" id="oJC-Cr-P8O"/>
                             <constraint firstItem="HRO-rO-ote" firstAttribute="top" secondItem="4xy-0a-hV7" secondAttribute="bottom" constant="10" id="p0c-4V-jci"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ps7-wz-5bF" secondAttribute="trailing" constant="4" id="s8o-Uj-RyH"/>
@@ -972,6 +978,7 @@
                     <connections>
                         <outlet property="attachmentLabel" destination="xKq-5l-WO7" id="QGH-IO-Iea"/>
                         <outlet property="cityLabel" destination="h7z-ZO-C3f" id="Q1m-Pk-swK"/>
+                        <outlet property="documentButton" destination="W84-BN-uB4" id="BWQ-I1-8bR"/>
                         <outlet property="documentTypeLabel" destination="Vft-9E-kdI" id="c5q-1L-ZIy"/>
                         <outlet property="imagePicked" destination="4xy-0a-hV7" id="l44-er-H9a"/>
                         <outlet property="selectDocument" destination="HRO-rO-ote" id="IgH-9m-1w4"/>
@@ -981,8 +988,10 @@
                         <outlet property="userEmail" destination="uHr-Xg-In9" id="YK4-lW-egV"/>
                         <outlet property="userLastName" destination="TfP-2z-oPy" id="O52-7C-ace"/>
                         <outlet property="userName" destination="aYn-ul-HLi" id="vhd-tb-n7V"/>
+                        <outlet property="viewTitle" destination="cLs-23-5ea" id="bTg-KF-9Dd"/>
                         <segue destination="no5-Wf-Nab" kind="show" identifier="LocateOfficesSegue" id="24Q-mx-PEb"/>
                         <segue destination="Isd-zH-Jea" kind="show" identifier="DisplayDocumentsSegue" id="ioE-Z9-erI"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LogoutSegue" id="JA0-8q-cZm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wun-EH-WxG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1030,6 +1039,7 @@
         <segue reference="XCB-ZB-APO"/>
         <segue reference="ebz-c4-jfr"/>
         <segue reference="FZn-T6-Ty6"/>
+        <segue reference="UXg-AN-ziD"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LogoSP" width="208" height="76"/>

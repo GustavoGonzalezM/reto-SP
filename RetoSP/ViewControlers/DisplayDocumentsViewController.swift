@@ -24,11 +24,12 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
     var appearanceMode: Int = 0
     var appearanceText: String = ""
     var menuDatasource = [
-        "Enviar documentos",
-        "Ver Documentos",
-        "Oficinas",
-        "Modo",
-        "Idioma Inglés"
+        "mainMenu.sendDocuments".localized(),
+        "mainMenu.displayDocuments".localized(),
+        "mainMenu.offices".localized(),
+        "mainMenu.nightMode".localized(),
+        "mainMenu.englishLanguage".localized(),
+        "mainMenu.logout".localized()
     ]
     
     override func viewDidLoad() {
@@ -47,7 +48,7 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.left")
         appearanceMode = osTheme.rawValue
-        appearanceText = appearanceMode == 1 ? "nocturno" : "día"
+        appearanceText = appearanceMode == 1 ? "mainMenu.nightMode".localized() : "mainMenu.dayMode".localized()
         mainMenu.backgroundColor = UIColor(named: "background")
         mainMenu.textColor = UIColor(named: "default") ?? .label
         setupAppearanceText(appearanceText)
@@ -68,6 +69,13 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
                     self.setAppearance()
                 case 4:
                     print("Modo inglés seleccionado")
+                case 5:
+                    let alert = UIAlertController(title: "alert.logoutTitle".localized(), message: "alert.logoutMessage".localized(), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .destructive, handler: { _ in
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }))
+                    alert.addAction(UIAlertAction(title: "alert.cancelButton".localized(), style: .cancel))
+                    self.present(alert, animated: true)
                 default:
                     print(index)
             }
@@ -119,7 +127,7 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
             mainMenu.backgroundColor = UIColor(named: "mainMenu")
             mainMenu.textColor = UIColor.white
             UIApplication.shared.statusBarStyle = .lightContent
-            self.setupAppearanceText("día")
+            self.setupAppearanceText("mainMenu.dayMode".localized())
             self.appearanceMode = 2
             
             
@@ -129,14 +137,14 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
             mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
             self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
             UIApplication.shared.statusBarStyle = .darkContent
-            self.setupAppearanceText("nocturno")
+            self.setupAppearanceText("mainMenu.nightMode".localized())
             self.appearanceMode = 1
             
         }
     }
     
     func setupAppearanceText(_ appearance: String){
-        menuDatasource[3] = "Modo \(appearance)"
+        menuDatasource[3] = appearance
     }
     
     func formatDate(date: String) -> String {
@@ -152,5 +160,11 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
             let viewController = segue.destination as? ViewDocumentViewController
             viewController?.image = self.image
         }
+    }
+    
+    func generateAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .default))
+        self.present(alert, animated: true)
     }
 }

@@ -12,14 +12,16 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
 
     @IBOutlet weak var selectDocument: UIView!
     @IBOutlet weak var selectImage: UIButton!
+    @IBOutlet weak var viewTitle: UILabel!
     @IBOutlet weak var documentTypeLabel: UILabel!
-    @IBOutlet weak var cityLabel: UIButton!
-    @IBOutlet weak var attachmentLabel: UIButton!
-    @IBOutlet weak var imagePicked: UIImageView!
+    @IBOutlet weak var userDocumentNumber: UITextField!
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userLastName: UITextField!
     @IBOutlet weak var userEmail: UITextField!
-    @IBOutlet weak var userDocumentNumber: UITextField!
+    @IBOutlet weak var cityLabel: UIButton!
+    @IBOutlet weak var attachmentLabel: UIButton!
+    @IBOutlet weak var imagePicked: UIImageView!
+    @IBOutlet weak var documentButton: UIButton!
     @IBOutlet weak var sendButton: UIButton!
     
     let networking = NetworkingProvider()
@@ -35,20 +37,21 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     var appearanceMode: Int = 0
     var appearanceText: String = ""
     var menuDatasource = [
-        "Enviar documentos",
-        "Ver Documentos",
-        "Oficinas",
-        "Modo",
-        "Idioma Inglés"
-        ]
+        "mainMenu.sendDocuments".localized(),
+        "mainMenu.displayDocuments".localized(),
+        "mainMenu.offices".localized(),
+        "mainMenu.nightMode".localized(),
+        "mainMenu.englishLanguage".localized(),
+        "mainMenu.logout".localized()
+    ]
     
     let idTypeMenu: DropDown = {
         let menu = DropDown()
         menu.dataSource = [
-        "Cédula",
-        "Cédula de extranjería",
-        "Pasaporte",
-        "Tarjeta de identidad"
+            "sendDocuments.idTypeMenu.idCard".localized(),
+            "sendDocuments.idTypeMenu.foreignerIdCard".localized(),
+            "sendDocuments.idTypeMenu.passport".localized(),
+            "sendDocuments.idTypeMenu.youngIdCard".localized()
         ]
         
         return menu
@@ -62,9 +65,9 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     let attachmentTypeMenu: DropDown = {
         let menu = DropDown()
         menu.dataSource = [
-        "Incapacidad",
-        "Factura",
-        "Otro"
+            "sendDocuments.attachmentTypeMenu.inability".localized(),
+            "sendDocuments.attachmentTypeMenu.invoice".localized(),
+            "sendDocuments.attachmentTypeMenu.other".localized()
         ]
         
         return menu
@@ -72,6 +75,17 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        appearanceMode = osTheme.rawValue
+        appearanceText = appearanceMode == 1 ? "mainMenu.nightMode".localized() : "mainMenu.dayMode".localized()
+        mainMenu.backgroundColor = UIColor(named: "background")
+        mainMenu.textColor = UIColor(named: "default") ?? .label
+        setupAppearanceText(appearanceText)
+        setupUI()
+        setupLocalization()
+        setupTextFieldsData()
+    }
+    
+    func setupUI() {
         self.hideKeyboardWhenTappedOutside()
         selectDocument.setOnClickListener {
             self.idTypeMenu.show()
@@ -82,18 +96,29 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         }
         loadOffices()
         imagePicker.delegate = self
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
+        self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.left")
+        appearanceMode = osTheme.rawValue
+        appearanceText = appearanceMode == 1 ? "mainMenu.nightMode".localized() : "mainMenu.dayMode".localized()
+        mainMenu.backgroundColor = UIColor(named: "background")
+        mainMenu.textColor = UIColor(named: "default") ?? .label
+
+    }
+    
+    func setupLocalization() {
+        viewTitle.text = "sendDocuments.viewTitle".localized()
+        documentTypeLabel.text = "sendDocuments.documentTypeLabel".localized()
+        userDocumentNumber.placeholder = "sendDocuments.userDocumentNumber".localized()
+        userName.placeholder = "sendDocuments.userName".localized()
+        userLastName.placeholder = "sendDocuments.userLastName".localized()
+        userEmail.placeholder = "sendDocuments.userEmail".localized()
+    }
+    
+    func setupTextFieldsData() {
         guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
         userName.text = user.nombre
         userLastName.text = user.apellido
         userEmail.text = user.email
-        
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
-        self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.left")
-        appearanceMode = osTheme.rawValue
-        appearanceText = appearanceMode == 1 ? "nocturno" : "día"
-        mainMenu.backgroundColor = UIColor(named: "background")
-        mainMenu.textColor = UIColor(named: "default") ?? .label
-        setupAppearanceText(appearanceText)
     }
     
     func loadOffices() {
@@ -106,8 +131,7 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         } failure: { error in
             DispatchQueue.main.async {
                 print(error!.localizedDescription)
-                self.generateAlert(title: "Error", message: "Error al conectar con el servidor\nInténtelo de nuevo más tarde")
-                
+                self.generateAlert(title: "Error", message: "sendDocuments.error.serverError".localized())
             }
         }
     }
@@ -117,18 +141,25 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         mainMenu.bottomOffset = CGPoint(x: 0, y: 30)
         mainMenu.selectionAction = { index, _ in
             switch index {
-            case 0:
-                print(index)
-            case 1:
-                self.performSegue(withIdentifier: "DisplayDocumentsSegue", sender: self)
-            case 2:
-                self.performSegue(withIdentifier: "LocateOfficesSegue", sender: self)
-            case 3:
-                self.setAppearance()
-            case 4:
-                print("Modo inglés seleccionado")
-            default:
-                print(index)
+                case 0:
+                    print(index)
+                case 1:
+                    self.performSegue(withIdentifier: "DisplayDocumentsSegue", sender: self)
+                case 2:
+                    self.performSegue(withIdentifier: "LocateOfficesSegue", sender: self)
+                case 3:
+                    self.setAppearance()
+                case 4:
+                    print("Modo inglés seleccionado")
+                case 5:
+                    let alert = UIAlertController(title: "alert.logoutTitle".localized(), message: "alert.logoutMessage".localized(), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .destructive, handler: { _ in
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }))
+                    alert.addAction(UIAlertAction(title: "alert.cancelButton".localized(), style: .cancel))
+                    self.present(alert, animated: true)
+                default:
+                    print(index)
             }
         }
         mainMenu.dataSource = menuDatasource
@@ -152,20 +183,20 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func selectImageTapped(_ sender: Any) {
-        let alert = UIAlertController(title: "Seleccionar", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Tomar foto", style: .default){ _ in
+        let alert = UIAlertController(title: "sendDocuments.picture.title".localized(), message: nil, preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "sendDocuments.picture.takePicture".localized(), style: .default){ _ in
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .camera
             
             self.present(self.imagePicker, animated: true, completion: nil)
         })
-        alert.addAction(UIAlertAction(title: "Cargar imagen de la galería", style: .default){ _ in
+        alert.addAction(UIAlertAction(title: "sendDocuments.picture.selectPicture".localized(), style: .default){ _ in
             self.imagePicker.allowsEditing = false
             self.imagePicker.sourceType = .photoLibrary
             
             self.present(self.imagePicker, animated: true, completion: nil)
         })
-        alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel))
+        alert.addAction(UIAlertAction(title: "sendDocuments.picture.cancel".localized(), style: .cancel))
         self.present(alert, animated: true)
     }
     
@@ -185,7 +216,7 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     
     func generateAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .default))
         self.present(alert, animated: true)
     }
     
@@ -202,15 +233,16 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
                                                        attachment: imageInBase64)
             networking.uploadDocument(newDocument: newDocument) { response in
                 if response {
-                    print("OK")
+                    self.generateAlert(title: "sendDocuments.success.messageTitle".localized(), message: "sendDocuments.success.message".localized())
                 } else {
-                    print("falló")
+                    self.generateAlert(title: "sendDocuments.failure.messageTitle".localized(), message: "sendDocuments.failure.message".localized())
                 }
             }
         } else {
+            let failureMessage = "sendDocuments.submit.failureMessage".localized()
             let missingFieldsResume = missingFields.joined(separator: "\n")
-            let alert = UIAlertController(title: "Verificar", message: "Faltan:\n \(missingFieldsResume)", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Aceptar", style: .default))
+            let alert = UIAlertController(title: "sendDocuments.submit.failureTitle".localized(), message: "\(failureMessage)\(missingFieldsResume)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .default))
             self.present(alert, animated: true)
         }
         
@@ -221,23 +253,23 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         missingFields.removeAll()
         if self.imagePicked.image == nil {
             result += 1
-            missingFields.append("Escoger imagen")
+            missingFields.append("sendDocuments.missing.pickImage".localized())
         }
         if !idTypeMenu.dataSource.contains(documentTypeLabel.text ?? "") {
             result += 1
-            missingFields.append("Tipo de documento")
+            missingFields.append("sendDocuments.missing.idType".localized())
         }
         if userDocumentNumber.text == "" {
             result += 1
-            missingFields.append("Número de documento")
+            missingFields.append("sendDocuments.missing.idNumber".localized())
         }
         if userName.text == "" {
             result += 1
-            missingFields.append("Nombres")
+            missingFields.append("sendDocuments.missing.name".localized())
         }
         if userLastName.text == "" {
             result += 1
-            missingFields.append("Apellidos")
+            missingFields.append("sendDocuments.missing.lastname".localized())
         }
         if userEmail.text == "" {
             result += 1
@@ -245,15 +277,15 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         }
         if !isEmailValid() {
             result += 1
-            missingFields.append("Email no válido")
+            missingFields.append("sendDocuments.missing.invalidEmail".localized())
         }
         if !cityTypeMenu.dataSource.contains(cityLabel.titleLabel?.text ?? "") {
             result += 1
-            missingFields.append("Escoger ciudad")
+            missingFields.append("sendDocuments.missing.city".localized())
         }
         if !attachmentTypeMenu.dataSource.contains(attachmentLabel.titleLabel?.text ?? "") {
             result += 1
-            missingFields.append("Escoger tipo de adjunto")
+            missingFields.append("sendDocuments.missing.attachmentType".localized())
         }
         return result == 0
     }
@@ -270,7 +302,7 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
             mainMenu.backgroundColor = UIColor(named: "mainMenu")
             mainMenu.textColor = UIColor.white
             UIApplication.shared.statusBarStyle = .lightContent
-            self.setupAppearanceText("día")
+            self.setupAppearanceText("mainMenu.dayMode".localized())
             self.appearanceMode = 2
             
             
@@ -280,14 +312,14 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
             mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
             self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
             UIApplication.shared.statusBarStyle = .darkContent
-            self.setupAppearanceText("nocturno")
+            self.setupAppearanceText("mainMenu.nightMode".localized())
             self.appearanceMode = 1
-           
+            
         }
     }
     
     func setupAppearanceText(_ appearance: String){
-        menuDatasource[3] = "Modo \(appearance)"
+        menuDatasource[3] = appearance
     }
 }
 

@@ -1,0 +1,111 @@
+
+/* Class = "UIButton"; configuration.title = "Ingresar   "; ObjectID = "4ii-Z9-Acf"; */
+"4ii-Z9-Acf.configuration.title" = "Ingresar   ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "4ii-Z9-Acf"; */
+"4ii-Z9-Acf.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "  Password"; ObjectID = "5iZ-Mw-Iwx"; */
+"5iZ-Mw-Iwx.placeholder" = "  Password";
+
+/* Class = "UIButton"; configuration.title = "Enviar"; ObjectID = "FIZ-aU-p0F"; */
+"FIZ-aU-p0F.configuration.title" = "Enviar";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "FIZ-aU-p0F"; */
+"FIZ-aU-p0F.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Número de documento"; ObjectID = "GVh-id-pvF"; */
+"GVh-id-pvF.placeholder" = "Número de documento";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "H8d-gl-Dfq"; */
+"H8d-gl-Dfq.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "  Oficinas                    "; ObjectID = "OTK-Eh-51w"; */
+"OTK-Eh-51w.text" = "  Oficinas                    ";
+
+/* Class = "UILabel"; text = "Ingresa tus datos para acceder"; ObjectID = "S6D-u5-ZPw"; */
+"S6D-u5-ZPw.text" = "Ingresa tus datos para acceder";
+
+/* Class = "UILabel"; text = "  Ver documentos"; ObjectID = "SuQ-t1-rgN"; */
+"SuQ-t1-rgN.text" = "  Ver documentos";
+
+/* Class = "UITextField"; placeholder = "Apellidos"; ObjectID = "TfP-2z-oPy"; */
+"TfP-2z-oPy.placeholder" = "Apellidos";
+
+/* Class = "UILabel"; text = "Estas son las opciones que tenemos para ti"; ObjectID = "UxD-DZ-ACB"; */
+"UxD-DZ-ACB.text" = "Estas son las opciones que tenemos para ti";
+
+/* Class = "UILabel"; text = "Tipo de documento"; ObjectID = "Vft-9E-kdI"; */
+"Vft-9E-kdI.text" = "Tipo de documento";
+
+/* Class = "UIButton"; configuration.title = "Documento"; ObjectID = "W84-BN-uB4"; */
+"W84-BN-uB4.configuration.title" = "Documento";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "W84-BN-uB4"; */
+"W84-BN-uB4.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "  Email"; ObjectID = "Xzm-jR-34k"; */
+"Xzm-jR-34k.placeholder" = "  Email";
+
+/* Class = "UITextField"; placeholder = "Nombres"; ObjectID = "aYn-ul-HLi"; */
+"aYn-ul-HLi.placeholder" = "Nombres";
+
+/* Class = "UIButton"; configuration.title = "Ingresar   "; ObjectID = "acN-lo-bON"; */
+"acN-lo-bON.configuration.title" = "Ingresar   ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "acN-lo-bON"; */
+"acN-lo-bON.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Envío de documentación"; ObjectID = "cLs-23-5ea"; */
+"cLs-23-5ea.text" = "Envío de documentación";
+
+/* Class = "UILabel"; text = "Oficinas"; ObjectID = "e3i-bC-VHJ"; */
+"e3i-bC-VHJ.text" = "Oficinas";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "eup-fZ-Dhl"; */
+"eup-fZ-Dhl.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ey3-be-W5w"; */
+"ey3-be-W5w.normalTitle" = "Ingresar con huella";
+
+/* Class = "UIButton"; configuration.title = "Ingresar   "; ObjectID = "feD-NU-cSf"; */
+"feD-NU-cSf.configuration.title" = "Ingresar   ";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "feD-NU-cSf"; */
+"feD-NU-cSf.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "g4e-T8-yHy"; */
+"g4e-T8-yHy.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gOz-71-bIV"; */
+"gOz-71-bIV.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gYq-6B-jcJ"; */
+"gYq-6B-jcJ.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Ciudad"; ObjectID = "h7z-ZO-C3f"; */
+"h7z-ZO-C3f.configuration.title" = "Ciudad";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "h7z-ZO-C3f"; */
+"h7z-ZO-C3f.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "  Enviar documentos"; ObjectID = "m6A-5F-TlV"; */
+"m6A-5F-TlV.text" = "  Enviar documentos";
+
+/* Class = "UILabel"; text = "Bienvenido"; ObjectID = "qlc-xb-R1l"; */
+"qlc-xb-R1l.text" = "Bienvenido";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "s4z-YA-JH5"; */
+"s4z-YA-JH5.normalTitle" = "Ingresar";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "uHr-Xg-In9"; */
+"uHr-Xg-In9.placeholder" = "Email";
+
+/* Class = "UIButton"; configuration.title = "Tipo de Adjunto"; ObjectID = "xKq-5l-WO7"; */
+"xKq-5l-WO7.configuration.title" = "Tipo de Adjunto";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "xKq-5l-WO7"; */
+"xKq-5l-WO7.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Documentos"; ObjectID = "xyB-oO-omv"; */
+"xyB-oO-omv.text" = "Documentos";

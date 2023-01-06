@@ -11,10 +11,11 @@ import CoreLocation
 import DropDown
 
 class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
-
+    
     @IBOutlet weak var mapView: MKMapView!
     
     let manager = CLLocationManager()
+    let networking = NetworkingProvider()
     
     var osTheme: UIUserInterfaceStyle {
         return UIScreen.main.traitCollection.userInterfaceStyle
@@ -23,23 +24,24 @@ class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
     var appearanceMode: Int = 0
     var appearanceText: String = ""
     var menuDatasource = [
-        "Enviar documentos",
-        "Ver Documentos",
-        "Oficinas",
-        "Modo",
-        "Idioma Inglés"
+        "mainMenu.sendDocuments".localized(),
+        "mainMenu.displayDocuments".localized(),
+        "mainMenu.offices".localized(),
+        "mainMenu.nightMode".localized(),
+        "mainMenu.englishLanguage".localized(),
+        "mainMenu.logout".localized()
     ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.left")
         appearanceMode = osTheme.rawValue
-        appearanceText = appearanceMode == 1 ? "nocturno" : "día"
+        appearanceText = appearanceMode == 1 ? "mainMenu.nightMode".localized() : "mainMenu.dayMode".localized()
         mainMenu.backgroundColor = UIColor(named: "background")
         mainMenu.textColor = UIColor(named: "default") ?? .label
         setupAppearanceText(appearanceText)
+        loadOffices()
     }
     
     @objc func menu() {
@@ -57,6 +59,13 @@ class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
                     self.setAppearance()
                 case 4:
                     print("Modo inglés seleccionado")
+                case 5:
+                    let alert = UIAlertController(title: "alert.logoutTitle".localized(), message: "alert.logoutMessage".localized(), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .destructive, handler: { _ in
+                        self.navigationController?.popToRootViewController(animated: true)
+                    }))
+                    alert.addAction(UIAlertAction(title: "alert.cancelButton".localized(), style: .cancel))
+                    self.present(alert, animated: true)
                 default:
                     print(index)
             }
@@ -72,7 +81,7 @@ class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
             mainMenu.backgroundColor = UIColor(named: "mainMenu")
             mainMenu.textColor = UIColor.white
             UIApplication.shared.statusBarStyle = .lightContent
-            self.setupAppearanceText("día")
+            self.setupAppearanceText("mainMenu.dayMode".localized())
             self.appearanceMode = 2
             
             
@@ -82,14 +91,14 @@ class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
             mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
             self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
             UIApplication.shared.statusBarStyle = .darkContent
-            self.setupAppearanceText("nocturno")
+            self.setupAppearanceText("mainMenu.nightMode".localized())
             self.appearanceMode = 1
             
         }
     }
     
     func setupAppearanceText(_ appearance: String){
-        menuDatasource[3] = "Modo \(appearance)"
+        menuDatasource[3] = appearance
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -121,12 +130,44 @@ class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
         
         mapView.setRegion(region,
                           animated: true)
-        
         let pin = MKPointAnnotation()
         pin.coordinate = coordinate
         mapView.addAnnotation(pin)
-        
-        
-        
+    }
+    
+    func loadOffices() {
+        networking.getOffices() { sophos in
+            DispatchQueue.main.async {
+                sophos.offices.forEach { office in
+                    guard var latitude = Double(office.latitud) else { return }
+                    guard let longitude = Double(office.longitud) else { return }
+                    
+                    if office.ciudad == "Chile" && latitude > 0 {
+                        latitude = latitude * -1
+                        
+                    }
+                    
+                    let annotation = MKPointAnnotation()
+                    annotation.title = office.nombre
+                    
+                    let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                    
+                    annotation.coordinate = location
+                    self.mapView.addAnnotation(annotation)
+                    
+                }
+            }
+        } failure: { error in
+            DispatchQueue.main.async {
+                print(error!.localizedDescription)
+                self.generateAlert(title: "Error", message: "locateOffices.error.serverError".localized())
+            }
+        }
+    }
+    
+    func generateAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .default))
+        self.present(alert, animated: true)
     }
 }

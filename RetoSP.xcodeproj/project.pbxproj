@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		11588B482965C22600941D32 /* ViewDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11588B472965C22600941D32 /* ViewDocumentViewController.swift */; };
+		11BEC7D02967702100EFC805 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BEC7CF2967702100EFC805 /* String.swift */; };
+		11BEC7D42967713900EFC805 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11BEC7D62967713900EFC805 /* Localizable.strings */; };
 		84409CD02932C98900486A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84409CCF2932C98900486A22 /* AppDelegate.swift */; };
 		84409CD22932C98900486A22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84409CD12932C98900486A22 /* SceneDelegate.swift */; };
 		84409CD42932C98900486A22 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84409CD32932C98900486A22 /* LoginViewController.swift */; };
@@ -31,6 +33,10 @@
 
 /* Begin PBXFileReference section */
 		11588B472965C22600941D32 /* ViewDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDocumentViewController.swift; sourceTree = "<group>"; };
+		11BEC7CF2967702100EFC805 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		11BEC7D52967713900EFC805 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		11BEC7D72967713D00EFC805 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		11BEC7DB2967A2C700EFC805 /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Main.strings"; sourceTree = "<group>"; };
 		3CEA955E329A0E3DD238C2A0 /* Pods_RetoSP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RetoSP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA877331B4AEBF69065D4B8 /* Pods-RetoSP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RetoSP.release.xcconfig"; path = "Target Support Files/Pods-RetoSP/Pods-RetoSP.release.xcconfig"; sourceTree = "<group>"; };
 		84409CCC2932C98900486A22 /* RetoSP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RetoSP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				84BF15C0293D204F001FE995 /* Extensions */,
+				11BEC7D62967713900EFC805 /* Localizable.strings */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 				84BF15C1293D206B001FE995 /* UserDefaults+Extensions.swift */,
 				844F5F95296074D10077B323 /* ImageView.swift */,
 				84C1281A29637F3D001CBFAA /* UIViewController.swift */,
+				11BEC7CF2967702100EFC805 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -214,6 +222,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"es-419",
 			);
 			mainGroup = 84409CC32932C98900486A22;
 			productRefGroup = 84409CCD2932C98900486A22 /* Products */;
@@ -231,6 +240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84409CDC2932C98B00486A22 /* LaunchScreen.storyboard in Resources */,
+				11BEC7D42967713900EFC805 /* Localizable.strings in Resources */,
 				84409CD92932C98B00486A22 /* Assets.xcassets in Resources */,
 				84409CD72932C98900486A22 /* Main.storyboard in Resources */,
 			);
@@ -299,6 +309,7 @@
 				11588B482965C22600941D32 /* ViewDocumentViewController.swift in Sources */,
 				8462DF1A2938349900B01EB8 /* SendDocumentsViewController.swift in Sources */,
 				84BF15C2293D206B001FE995 /* UserDefaults+Extensions.swift in Sources */,
+				11BEC7D02967702100EFC805 /* String.swift in Sources */,
 				84409CD22932C98900486A22 /* SceneDelegate.swift in Sources */,
 				84C1281B29637F3D001CBFAA /* UIViewController.swift in Sources */,
 			);
@@ -307,10 +318,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		11BEC7D62967713900EFC805 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				11BEC7D52967713900EFC805 /* en */,
+				11BEC7D72967713D00EFC805 /* es-419 */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		84409CD52932C98900486A22 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				84409CD62932C98900486A22 /* Base */,
+				11BEC7DB2967A2C700EFC805 /* es-419 */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -330,6 +351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -390,6 +412,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

@@ -1,0 +1,83 @@
+/* 
+  Localizable.strings
+  RetoSP
+
+  Created by Gustavo Gonzalez on 5/01/23.
+  
+*/
+
+// MARK: Alert
+"alert.dismissButton"                           =   "Aceptar";
+"alert.logoutTitle"                             =   "Cerrar Sesión";
+"alert.logoutMessage"                           =   "¿Está seguro que desea salir?";
+"alert.cancelButton"                            =   "Cancelar";
+
+// MARK: Login
+"login.loginButton"                             =   "Ingresar";
+"login.biometricButton"                         =   "Ingresar con huella";
+"login.error.emptyEmail"                        =   "El email no puede estar vacío";
+"login.error.emptyPassword"                     =   "El password no puede estar vacío";
+"login.error.invalidEmail"                      =   "El email no es válido";
+"login.error.invalidCredentials"                =   "Usuario o contraseña incorrectos\nIntente de nuevo";
+"login.error.serverError"                       =   "Error al conectar con el servidor\nInténtelo de nuevo más tarde";
+"login.biometricReason"                         =   "Por favor autorizar con TouchID!";
+"login.error.biometric.authenticationTitle"     =   "Fallo de autenticación";
+"login.error.biometric.authenticationMessage"   =   "Intenta nuevamente";
+"login.error.biometric.authenticationButton"    =   "Aceptar";
+"login.error.biometric.usageTitle"              =   "Fallo de autenticación";
+"login.error.biometric.usageMessage"            =   "Intenta nuevamente";
+"login.error.biometric.usageButton"             =   "Aceptar";
+
+// MARK: Main Menu
+"mainMenu.sendDocuments"                        =   "Enviar documentos";
+"mainMenu.displayDocuments"                     =   "Ver Documentos";
+"mainMenu.offices"                              =   "Oficinas";
+"mainMenu.dayMode"                              =   "Modo día";
+"mainMenu.nightMode"                            =   "Modo noche";
+"mainMenu.englishLanguage"                      =   "Idioma inglés";
+"mainMenu.spanishLanguage"                      =   "Idioma español";
+"mainMenu.logout"                               =   "Cerrar sesión";
+
+// MARK: Menu Screen
+"menuScreen.sendDocumentsLabel"                 =   "  Enviar documentos";
+"menuScreen.displayDocumentsLabel"              =   "  Ver documentos";
+"menuScreen.officesLabel"                       =   "  Oficinas";
+"menuScreen.bannerTitleLabel"                   =   "Bienvenido";
+"menuScreen.bannerCaptionLabel"                 =   "Estas son las opciones que tenemos para ti";
+
+// MARK: Send Documents
+"sendDocuments.viewTitle"                       =   "Envío de documentación";
+"sendDocuments.documentTypeLabel"               =   "Tipo de documento";
+"sendDocuments.userDocumentNumber"              =   "Número de documento";
+"sendDocuments.userName"                        =   "Nombres";
+"sendDocuments.userLastName"                    =   "Apellidos";
+"sendDocuments.userEmail"                       =   "Email";
+"sendDocuments.error.serverError"               =   "Error al conectar con el servidor\nInténtelo de nuevo más tarde";
+"sendDocuments.idTypeMenu.idCard"               =   "Cédula";
+"sendDocuments.idTypeMenu.foreignerIdCard"      =   "Cédula de extranjería";
+"sendDocuments.idTypeMenu.passport"             =   "Pasaporte";
+"sendDocuments.idTypeMenu.youngIdCard"          =   "Tarjeta de identidad";
+"sendDocuments.attachmentTypeMenu.inability"    =   "Incapacidad";
+"sendDocuments.attachmentTypeMenu.invoice"      =   "Factura";
+"sendDocuments.attachmentTypeMenu.other"        =   "Otro";
+"sendDocuments.picture.title"                   =   "Seleccionar";
+"sendDocuments.picture.takePicture"             =   "Tomar foto";
+"sendDocuments.picture.selectPicture"           =   "Cargar imagen de la galería";
+"sendDocuments.picture.cancel"                  =   "Cancelar";
+"sendDocuments.success.messageTitle"            =   "Enviado";
+"sendDocuments.success.message"                 =   "El documento ha sido enviado satisfactoriamente";
+"sendDocuments.failure.messageTitle"            =   "Error";
+"sendDocuments.failure.message"                 =   "El documento no ha podido ser enviado\nIntente de nuevo";
+"sendDocuments.submit.failureTitle"             =   "Verificar";
+"sendDocuments.submit.failureMessage"           =   "Faltan:\n";
+"sendDocuments.missing.pickImage"               =   "Escoger imagen";
+"sendDocuments.missing.idType"                  =   "Tipo de documento";
+"sendDocuments.missing.idNumber"                =   "Número de documento";
+"sendDocuments.missing.name"                    =   "Nombres";
+"sendDocuments.missing.lastname"                =   "Apellidos";
+"sendDocuments.missing.invalidEmail"            =   "Email no válido";
+"sendDocuments.missing.city"                    =   "Escoger ciudad";
+"sendDocuments.missing.attachmentType"          =   "Escoger tipo de adjunto";
+
+// MARK: Locate offices
+"locateOffices.error.serverError"               =   "Error al conectar con el servidor\nInténtelo de nuevo más tarde";
