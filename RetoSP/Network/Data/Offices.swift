@@ -16,17 +16,17 @@ struct Sophos: Codable {
 }
 
 struct Office: Codable {
-    let ciudad: String
-    let longitud: String
-    let idOficina: Int
-    let latitud: String
-    let nombre: String
+    let city: String
+    let longitude: String
+    let officeId: Int
+    let latitude: String
+    let name: String
 
     enum CodingKeys: String, CodingKey {
-        case ciudad = "Ciudad"
-        case longitud = "Longitud"
-        case idOficina = "IdOficina"
-        case latitud = "Latitud"
-        case nombre = "Nombre"
+        case city = "Ciudad"
+        case longitude = "Longitud"
+        case officeId = "IdOficina"
+        case latitude = "Latitud"
+        case name = "Nombre"
     }
 }

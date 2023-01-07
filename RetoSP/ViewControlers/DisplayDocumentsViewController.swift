@@ -17,9 +17,6 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
     let networking = NetworkingProvider()
     var documents = Documents(items: [Document]())
     var image = UIImage()
-    var osTheme: UIUserInterfaceStyle {
-        return UIScreen.main.traitCollection.userInterfaceStyle
-    }
     var mainMenu: DropDown = DropDown()
     var appearanceMode: Int = 0
     var appearanceText: String = ""
@@ -44,14 +41,20 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
         }
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        setupUI()
         
+    }
+    
+    func setupUI() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.left")
-        appearanceMode = osTheme.rawValue
+        appearanceMode = UserDefaults.standard.integer(forKey: "appearance")
         appearanceText = appearanceMode == 1 ? "mainMenu.nightMode".localized() : "mainMenu.dayMode".localized()
-        mainMenu.backgroundColor = UIColor(named: "background")
-        mainMenu.textColor = UIColor(named: "default") ?? .label
         setupAppearanceText(appearanceText)
+        setInitialAppearance()
+        if let currentLanguage = NSLocale.preferredLanguages.first{
+            self.setupLanguageText(currentLanguage)
+        }
     }
     
     @objc func menu() {
@@ -68,7 +71,18 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
                 case 3:
                     self.setAppearance()
                 case 4:
-                    print("Modo inglés seleccionado")
+                    if let currentLanguage = NSLocale.preferredLanguages.first{
+                        self.setupLanguageText(currentLanguage)
+                    }
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                        return
+                    }
+                    
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)")
+                        })
+                    }
                 case 5:
                     let alert = UIAlertController(title: "alert.logoutTitle".localized(), message: "alert.logoutMessage".localized(), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .destructive, handler: { _ in
@@ -120,26 +134,51 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
 
     }
     
-    func setAppearance() {
-        if self.appearanceMode == 1 {
+    func setInitialAppearance() {
+        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
+        if UserDefaults.standard.integer(forKey: "appearance") == 2 {
             self.view.overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.tintColor = UIColor.white
             mainMenu.backgroundColor = UIColor(named: "mainMenu")
             mainMenu.textColor = UIColor.white
             UIApplication.shared.statusBarStyle = .lightContent
             self.setupAppearanceText("mainMenu.dayMode".localized())
-            self.appearanceMode = 2
+            UserDefaults.standard.set(2, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
-            
-        } else if self.appearanceMode == 2 {
+        } else if UserDefaults.standard.integer(forKey: "appearance") == 1 {
             self.view.overrideUserInterfaceStyle = .light
             mainMenu.backgroundColor = UIColor.white
             mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
             self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
             UIApplication.shared.statusBarStyle = .darkContent
             self.setupAppearanceText("mainMenu.nightMode".localized())
-            self.appearanceMode = 1
+            UserDefaults.standard.set(1, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
+        }
+    }
+    
+    func setAppearance() {
+        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
+        if UserDefaults.standard.integer(forKey: "appearance") == 1 {
+            self.view.overrideUserInterfaceStyle = .dark
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            mainMenu.backgroundColor = UIColor(named: "mainMenu")
+            mainMenu.textColor = UIColor.white
+            UIApplication.shared.statusBarStyle = .lightContent
+            self.setupAppearanceText("mainMenu.dayMode".localized())
+            UserDefaults.standard.set(2, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
+        } else if UserDefaults.standard.integer(forKey: "appearance") == 2 {
+            self.view.overrideUserInterfaceStyle = .light
+            mainMenu.backgroundColor = UIColor.white
+            mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
+            self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
+            UIApplication.shared.statusBarStyle = .darkContent
+            self.setupAppearanceText("mainMenu.nightMode".localized())
+            UserDefaults.standard.set(1, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
         }
     }
     
@@ -166,5 +205,13 @@ class DisplayDocumentsViewController: UIViewController, UITableViewDelegate, UIT
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .default))
         self.present(alert, animated: true)
+    }
+    
+    func setupLanguageText (_ language: String) {
+        if language == "es-US" {
+            self.menuDatasource[4] = "mainMenu.englishLanguage".localized()
+        } else if language == "en" {
+            self.menuDatasource[4] = "mainMenu.spanishLanguage".localized()
+        }
     }
 }

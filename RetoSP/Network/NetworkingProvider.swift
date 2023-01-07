@@ -26,7 +26,7 @@ final class NetworkingProvider {
             
             do {
                 var decodedData = try JSONDecoder().decode(User.self, from: data)
-                if decodedData.acceso {
+                if decodedData.access {
                     decodedData.email = user
                     UserDefaults.standard.set(true, forKey: "enrolled")
                     UserDefaults.standard.storeCodable(decodedData, key: "user")
@@ -89,7 +89,8 @@ final class NetworkingProvider {
     
     func getDocuments(success: @escaping (_ documents: Documents) -> (), failure: @escaping (_ error: Error?) -> ()) {
         guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
-        guard let url = URL(string: "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Documentos?correo=victor.sanchez@gruposys.co") else { return }
+        guard let email = user.email else { return }
+        guard let url = URL(string: "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Documentos?correo=\(email)") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -114,7 +115,8 @@ final class NetworkingProvider {
     
     func viewDocument(documentId: String, success: @escaping (_ document: ViewDocument) -> (), failure: @escaping (_ error: Error?) -> ()) {
         guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
-        guard let url = URL(string: "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Documentos?correo=victor.sanchez@gruposys.co&&idRegistro=\(documentId)") else { return }
+        guard let email = user.email else { return }
+        guard let url = URL(string: "https://6w33tkx4f9.execute-api.us-east-1.amazonaws.com/RS_Documentos?correo=\(email)&&idRegistro=\(documentId)") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"

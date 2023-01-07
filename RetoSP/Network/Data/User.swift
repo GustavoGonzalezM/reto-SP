@@ -9,9 +9,18 @@ import Foundation
 
 struct User: Codable {
     let id: String?
-    let nombre: String?
-    let apellido: String?
-    let acceso: Bool
+    let name: String?
+    let lastName: String?
+    let access: Bool
     let admin: Bool?
     var email: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case id  = "id"
+        case name  = "nombre"
+        case lastName  = "apellido"
+        case access  = "acceso"
+        case admin  = "admin"
+        case email  = "email"
+    }
 }

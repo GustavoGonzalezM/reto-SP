@@ -13,8 +13,6 @@ class MenuScreenViewController: UIViewController {
     @IBOutlet weak var sendDocumentsScrollView: UIScrollView!
     @IBOutlet weak var displayDocumentsScrollView: UIScrollView!
     @IBOutlet weak var locateOfficesScrollView: UIScrollView!
-    
-    
     @IBOutlet weak var sendDocumentsButton: UIButton!
     @IBOutlet weak var displayDocumentsButton: UIButton!
     @IBOutlet weak var locateOfficesButton: UIButton!
@@ -23,12 +21,6 @@ class MenuScreenViewController: UIViewController {
     @IBOutlet weak var officesLabel: UILabel!
     @IBOutlet weak var bannerTitleLabel: UILabel!
     @IBOutlet weak var bannerCaptionLabel: UILabel!
-    
-    
-    var osTheme: UIUserInterfaceStyle {
-        return UIScreen.main.traitCollection.userInterfaceStyle
-    }
-    
     var mainMenu: DropDown = DropDown()
     var appearanceMode: Int = 0
     var appearanceText: String = ""
@@ -48,13 +40,19 @@ class MenuScreenViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setInitialAppearance()
+
+    }
+    
     func setupUI(){
         self.hideKeyboardWhenTappedOutside() 
         guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
         
         self.navigationController?.navigationBar.tintColor = UIColor(named: "default")
         self.navigationItem.setHidesBackButton(true, animated: true)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: user.nombre)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: user.name)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.left")
         
@@ -69,18 +67,16 @@ class MenuScreenViewController: UIViewController {
         self.locateOfficesScrollView.layer.cornerRadius = 10.0
         self.locateOfficesScrollView.layer.borderColor = UIColor(named: "offices")?.cgColor
         self.locateOfficesScrollView.layer.borderWidth = 1.0
-        
-        appearanceMode = osTheme.rawValue
+        appearanceMode = UserDefaults.standard.integer(forKey: "appearance")
         appearanceText = appearanceMode == 1 ? "mainMenu.nightMode".localized() : "mainMenu.dayMode".localized()
-        mainMenu.backgroundColor = UIColor(named: "background")
-        mainMenu.textColor = UIColor(named: "default") ?? .label
         setupAppearanceText(appearanceText)
+        setInitialAppearance()
+        if let currentLanguage = NSLocale.preferredLanguages.first{
+            self.setupLanguageText(currentLanguage)
+        }
     }
     
     func setupLocalization(){
-//        sendDocumentsButton.setTitle("menuScreen.sendDocumentsButton".localized(), for: .normal)
-//        displayDocumentsButton.setTitle("menuScreen.displayDocumentsButton".localized(), for: .normal)
-//        locateOfficesButton.setTitle("menuScreen.locateOfficesButton".localized(), for: .normal)
         sendDocumentsLabel.text = "menuScreen.sendDocumentsLabel".localized()
         displayDocumentsLabel.text = "menuScreen.displayDocumentsLabel".localized()
         officesLabel.text = "menuScreen.officesLabel".localized()
@@ -115,7 +111,19 @@ class MenuScreenViewController: UIViewController {
                 case 3:
                     self.setAppearance()
                 case 4:
-                    print("Modo inglés seleccionado")
+                    if let currentLanguage = NSLocale.preferredLanguages.first{
+                        self.setupLanguageText(currentLanguage)
+                    }
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                        return
+                    }
+
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)")
+                        })
+                    }
+                    
                 case 5:
                     let alert = UIAlertController(title: "alert.logoutTitle".localized(), message: "alert.logoutMessage".localized(), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .destructive, handler: { _ in
@@ -131,31 +139,64 @@ class MenuScreenViewController: UIViewController {
         mainMenu.show()
     }
     
-    func setAppearance() {
-        if self.appearanceMode == 1 {
+    func setInitialAppearance() {
+        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
+        if UserDefaults.standard.integer(forKey: "appearance") == 2 {
             self.view.overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.tintColor = UIColor.white
             mainMenu.backgroundColor = UIColor(named: "mainMenu")
             mainMenu.textColor = UIColor.white
             UIApplication.shared.statusBarStyle = .lightContent
             self.setupAppearanceText("mainMenu.dayMode".localized())
-            self.appearanceMode = 2
+            UserDefaults.standard.set(2, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
-            
-        } else if self.appearanceMode == 2 {
+        } else if UserDefaults.standard.integer(forKey: "appearance") == 1 {
             self.view.overrideUserInterfaceStyle = .light
             mainMenu.backgroundColor = UIColor.white
             mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
             self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
             UIApplication.shared.statusBarStyle = .darkContent
             self.setupAppearanceText("mainMenu.nightMode".localized())
-            self.appearanceMode = 1
-           
+            UserDefaults.standard.set(1, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
+        }
+    }
+    
+    func setAppearance() {
+        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
+        if UserDefaults.standard.integer(forKey: "appearance") == 1 {
+            self.view.overrideUserInterfaceStyle = .dark
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            mainMenu.backgroundColor = UIColor(named: "mainMenu")
+            mainMenu.textColor = UIColor.white
+            UIApplication.shared.statusBarStyle = .lightContent
+            self.setupAppearanceText("mainMenu.dayMode".localized())
+            UserDefaults.standard.set(2, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
+            
+        } else if UserDefaults.standard.integer(forKey: "appearance") == 2 {
+            self.view.overrideUserInterfaceStyle = .light
+            mainMenu.backgroundColor = UIColor.white
+            mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
+            self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
+            UIApplication.shared.statusBarStyle = .darkContent
+            self.setupAppearanceText("mainMenu.nightMode".localized())
+            UserDefaults.standard.set(1, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
         }
     }
     
     func setupAppearanceText(_ appearance: String){
         menuDatasource[3] = appearance
+    }
+    
+    func setupLanguageText (_ language: String) {
+        if language == "es-US" {
+            self.menuDatasource[4] = "mainMenu.englishLanguage".localized()
+        } else if language == "en" {
+            self.menuDatasource[4] = "mainMenu.spanishLanguage".localized()
+        }
     }
     
     func generateAlert(title: String, message: String) {

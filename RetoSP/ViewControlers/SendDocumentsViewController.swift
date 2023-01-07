@@ -27,12 +27,8 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     let networking = NetworkingProvider()
     let imagePicker = UIImagePickerController()
     var imageInBase64 = String()
-    let user: User = User(id: nil, nombre: nil, apellido: nil, acceso: true, admin: nil, email: nil)
+    let user: User = User(id: nil, name: nil, lastName: nil, access: true, admin: nil, email: nil)
     var missingFields = [String]()
-    
-    var osTheme: UIUserInterfaceStyle {
-        return UIScreen.main.traitCollection.userInterfaceStyle
-    }
     var mainMenu: DropDown = DropDown()
     var appearanceMode: Int = 0
     var appearanceText: String = ""
@@ -75,11 +71,6 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        appearanceMode = osTheme.rawValue
-        appearanceText = appearanceMode == 1 ? "mainMenu.nightMode".localized() : "mainMenu.dayMode".localized()
-        mainMenu.backgroundColor = UIColor(named: "background")
-        mainMenu.textColor = UIColor(named: "default") ?? .label
-        setupAppearanceText(appearanceText)
         setupUI()
         setupLocalization()
         setupTextFieldsData()
@@ -98,10 +89,13 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         imagePicker.delegate = self
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .plain, target: self, action: #selector(self.menu))
         self.navigationController?.navigationBar.backIndicatorImage = UIImage(systemName: "arrow.left")
-        appearanceMode = osTheme.rawValue
+        appearanceMode = UserDefaults.standard.integer(forKey: "appearance")
         appearanceText = appearanceMode == 1 ? "mainMenu.nightMode".localized() : "mainMenu.dayMode".localized()
-        mainMenu.backgroundColor = UIColor(named: "background")
-        mainMenu.textColor = UIColor(named: "default") ?? .label
+        setupAppearanceText(appearanceText)
+        setInitialAppearance()
+        if let currentLanguage = NSLocale.preferredLanguages.first{
+            self.setupLanguageText(currentLanguage)
+        }
 
     }
     
@@ -116,8 +110,8 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     
     func setupTextFieldsData() {
         guard let user: User = UserDefaults.standard.retrieveCodable(for: "user") else { return }
-        userName.text = user.nombre
-        userLastName.text = user.apellido
+        userName.text = user.name
+        userLastName.text = user.lastName
         userEmail.text = user.email
     }
     
@@ -125,7 +119,7 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         networking.getOffices() { sophos in
             DispatchQueue.main.async {
                 sophos.offices.forEach { office in
-                    self.cityTypeMenu.dataSource.append(office.ciudad)
+                    self.cityTypeMenu.dataSource.append(office.city)
                 }
             }
         } failure: { error in
@@ -150,7 +144,18 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
                 case 3:
                     self.setAppearance()
                 case 4:
-                    print("Modo inglés seleccionado")
+                    if let currentLanguage = NSLocale.preferredLanguages.first{
+                        self.setupLanguageText(currentLanguage)
+                    }
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                        return
+                    }
+                    
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("Settings opened: \(success)")
+                        })
+                    }
                 case 5:
                     let alert = UIAlertController(title: "alert.logoutTitle".localized(), message: "alert.logoutMessage".localized(), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "alert.dismissButton".localized(), style: .destructive, handler: { _ in
@@ -295,31 +300,64 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
         return email.evaluate(with: self.userEmail.text)
     }
     
-    func setAppearance() {
-        if self.appearanceMode == 1 {
+    func setInitialAppearance() {
+        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
+        if UserDefaults.standard.integer(forKey: "appearance") == 2 {
             self.view.overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.tintColor = UIColor.white
             mainMenu.backgroundColor = UIColor(named: "mainMenu")
             mainMenu.textColor = UIColor.white
             UIApplication.shared.statusBarStyle = .lightContent
             self.setupAppearanceText("mainMenu.dayMode".localized())
-            self.appearanceMode = 2
+            UserDefaults.standard.set(2, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
-            
-        } else if self.appearanceMode == 2 {
+        } else if UserDefaults.standard.integer(forKey: "appearance") == 1 {
             self.view.overrideUserInterfaceStyle = .light
             mainMenu.backgroundColor = UIColor.white
             mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
             self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
             UIApplication.shared.statusBarStyle = .darkContent
             self.setupAppearanceText("mainMenu.nightMode".localized())
-            self.appearanceMode = 1
+            UserDefaults.standard.set(1, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
+        }
+    }
+    
+    func setAppearance() {
+        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
+        if UserDefaults.standard.integer(forKey: "appearance") == 1 {
+            self.view.overrideUserInterfaceStyle = .dark
+            self.navigationController?.navigationBar.tintColor = UIColor.white
+            mainMenu.backgroundColor = UIColor(named: "mainMenu")
+            mainMenu.textColor = UIColor.white
+            UIApplication.shared.statusBarStyle = .lightContent
+            self.setupAppearanceText("mainMenu.dayMode".localized())
+            UserDefaults.standard.set(2, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
+        } else if UserDefaults.standard.integer(forKey: "appearance") == 2 {
+            self.view.overrideUserInterfaceStyle = .light
+            mainMenu.backgroundColor = UIColor.white
+            mainMenu.textColor = UIColor(named: "navigationBarDay") ?? .black
+            self.navigationController?.navigationBar.tintColor = UIColor(named: "navigationBarDay")
+            UIApplication.shared.statusBarStyle = .darkContent
+            self.setupAppearanceText("mainMenu.nightMode".localized())
+            UserDefaults.standard.set(1, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
         }
     }
     
     func setupAppearanceText(_ appearance: String){
         menuDatasource[3] = appearance
+    }
+    
+    func setupLanguageText (_ language: String) {
+        if language == "es-US" {
+            self.menuDatasource[4] = "mainMenu.englishLanguage".localized()
+        } else if language == "en" {
+            self.menuDatasource[4] = "mainMenu.spanishLanguage".localized()
+        }
     }
 }
 

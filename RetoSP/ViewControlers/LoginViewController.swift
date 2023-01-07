@@ -21,6 +21,10 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordContainerView: UIView!
     @IBOutlet weak var eyeImage: UIButton!
     
+    var osTheme: UIUserInterfaceStyle {
+        return UIScreen.main.traitCollection.userInterfaceStyle
+    }
+    
     let networking = NetworkingProvider()
     let loading = NVActivityIndicatorView(frame: .zero, type: .ballPulse, color: UIColor(named: "default"), padding: 0)
     
@@ -28,6 +32,12 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupLocalization()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setInitialAppearance()
+
     }
     
     func setupUI() {
@@ -64,12 +74,29 @@ class LoginViewController: UIViewController {
             loading.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loading.topAnchor.constraint(equalTo: biometricButton.bottomAnchor)
         ])
-        
+        UserDefaults.standard.set(osTheme.rawValue, forKey: "appearance")
+        setInitialAppearance()
     }
     
     func setupLocalization(){
         self.loginButton.setTitle("login.loginButton".localized(), for: .normal)
         self.biometricButton.setTitle("login.biometricButton".localized(), for: .normal)
+    }
+    
+    func setInitialAppearance() {
+        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
+        if UserDefaults.standard.integer(forKey: "appearance") == 2 {
+            self.view.overrideUserInterfaceStyle = .dark
+            UIApplication.shared.statusBarStyle = .lightContent
+            UserDefaults.standard.set(2, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
+
+        } else if UserDefaults.standard.integer(forKey: "appearance") == 1 {
+            self.view.overrideUserInterfaceStyle = .light
+            UIApplication.shared.statusBarStyle = .darkContent
+            UserDefaults.standard.set(1, forKey: "appearance")
+            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
+        }
     }
 
     @IBAction func eyeImageTapped(_ sender: Any) {
@@ -91,7 +118,7 @@ class LoginViewController: UIViewController {
             loading.startAnimating()
             networking.login(user: emailTextField.text!, password: passwordTextField.text!) { user in
                 DispatchQueue.main.async {
-                    if user.acceso == true {
+                    if user.access == true {
                         self.biometricButton.isEnabled = true
                         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MenuScreenViewController") as! MenuScreenViewController
                         self.navigationController?.pushViewController(viewController, animated: true)

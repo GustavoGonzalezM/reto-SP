@@ -17,17 +17,17 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="RetoSP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LogoSP" translatesAutoresizingMaskIntoConstraints="NO" id="Aax-a7-7Cx" userLabel="LogoSP">
-                                <rect key="frame" x="50" y="103" width="293" height="107"/>
+                                <rect key="frame" x="50" y="59" width="293" height="107"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" secondItem="Aax-a7-7Cx" secondAttribute="height" multiplier="52:19" id="XwK-Mp-snq"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your info to login" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S6D-u5-ZPw">
-                                <rect key="frame" x="65" y="230" width="263" height="30"/>
+                                <rect key="frame" x="65" y="186" width="263" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" secondItem="S6D-u5-ZPw" secondAttribute="height" multiplier="6:1" constant="180" id="FRT-91-IE0"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="Odl-mK-Khh"/>
@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="Dht-7z-ZhR">
-                                <rect key="frame" x="47.666666666666657" y="274" width="298" height="253"/>
+                                <rect key="frame" x="47.666666666666657" y="230" width="298" height="253"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rb-dk-LMj">
                                         <rect key="frame" x="0.0" y="0.0" width="298" height="40"/>
@@ -126,6 +126,7 @@
                                         </constraints>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Login">
+                                            <color key="baseForegroundColor" name="background"/>
                                             <color key="baseBackgroundColor" name="AccentColor"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -602,7 +603,7 @@
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Yv4-Xt-VZt"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="background"/>
                         <constraints>
                             <constraint firstItem="Cab-AB-gdy" firstAttribute="top" secondItem="Yv4-Xt-VZt" secondAttribute="top" constant="60" id="5Ty-rQ-V3Q"/>
                             <constraint firstItem="Yv4-Xt-VZt" firstAttribute="trailing" secondItem="Cab-AB-gdy" secondAttribute="trailing" constant="20" id="M50-Zh-tfl"/>
@@ -1036,10 +1037,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XCB-ZB-APO"/>
+        <segue reference="9iX-wq-CXd"/>
         <segue reference="ebz-c4-jfr"/>
         <segue reference="FZn-T6-Ty6"/>
-        <segue reference="UXg-AN-ziD"/>
+        <segue reference="GsT-3q-bFp"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LogoSP" width="208" height="76"/>
@@ -1110,9 +1111,6 @@
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>
