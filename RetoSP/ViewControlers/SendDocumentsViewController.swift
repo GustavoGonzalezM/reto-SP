@@ -238,9 +238,13 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
                                                        attachment: imageInBase64)
             networking.uploadDocument(newDocument: newDocument) { response in
                 if response {
-                    self.generateAlert(title: "sendDocuments.success.messageTitle".localized(), message: "sendDocuments.success.message".localized())
+                    DispatchQueue.main.async {
+                        self.generateAlert(title: "sendDocuments.success.messageTitle".localized(), message: "sendDocuments.success.message".localized())
+                    }
                 } else {
-                    self.generateAlert(title: "sendDocuments.failure.messageTitle".localized(), message: "sendDocuments.failure.message".localized())
+                    DispatchQueue.main.async {
+                        self.generateAlert(title: "sendDocuments.failure.messageTitle".localized(), message: "sendDocuments.failure.message".localized())
+                    }
                 }
             }
         } else {
@@ -301,7 +305,6 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
     }
     
     func setInitialAppearance() {
-        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
         if UserDefaults.standard.integer(forKey: "appearance") == 2 {
             self.view.overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -310,7 +313,6 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
             UIApplication.shared.statusBarStyle = .lightContent
             self.setupAppearanceText("mainMenu.dayMode".localized())
             UserDefaults.standard.set(2, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
         } else if UserDefaults.standard.integer(forKey: "appearance") == 1 {
             self.view.overrideUserInterfaceStyle = .light
@@ -320,12 +322,10 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
             UIApplication.shared.statusBarStyle = .darkContent
             self.setupAppearanceText("mainMenu.nightMode".localized())
             UserDefaults.standard.set(1, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
         }
     }
     
     func setAppearance() {
-        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
         if UserDefaults.standard.integer(forKey: "appearance") == 1 {
             self.view.overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -334,7 +334,6 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
             UIApplication.shared.statusBarStyle = .lightContent
             self.setupAppearanceText("mainMenu.dayMode".localized())
             UserDefaults.standard.set(2, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
         } else if UserDefaults.standard.integer(forKey: "appearance") == 2 {
             self.view.overrideUserInterfaceStyle = .light
@@ -344,7 +343,6 @@ class SendDocumentsViewController: UIViewController, UIImagePickerControllerDele
             UIApplication.shared.statusBarStyle = .darkContent
             self.setupAppearanceText("mainMenu.nightMode".localized())
             UserDefaults.standard.set(1, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
         }
     }
     

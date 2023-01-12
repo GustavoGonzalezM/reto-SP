@@ -94,7 +94,6 @@ class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func setInitialAppearance() {
-        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
         if UserDefaults.standard.integer(forKey: "appearance") == 2 {
             self.view.overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -103,7 +102,6 @@ class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
             UIApplication.shared.statusBarStyle = .lightContent
             self.setupAppearanceText("mainMenu.dayMode".localized())
             UserDefaults.standard.set(2, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
         } else if UserDefaults.standard.integer(forKey: "appearance") == 1 {
             self.view.overrideUserInterfaceStyle = .light
@@ -113,13 +111,11 @@ class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
             UIApplication.shared.statusBarStyle = .darkContent
             self.setupAppearanceText("mainMenu.nightMode".localized())
             UserDefaults.standard.set(1, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
         }
     }
     
     func setAppearance() {
         if UserDefaults.standard.integer(forKey: "appearance") == 1 {
-            print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
             self.view.overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.tintColor = UIColor.white
             mainMenu.backgroundColor = UIColor(named: "mainMenu")
@@ -127,7 +123,6 @@ class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
             UIApplication.shared.statusBarStyle = .lightContent
             self.setupAppearanceText("mainMenu.dayMode".localized())
             UserDefaults.standard.set(2, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
         } else if UserDefaults.standard.integer(forKey: "appearance") == 2 {
             self.view.overrideUserInterfaceStyle = .light
@@ -137,7 +132,6 @@ class LocateOfficesViewController: UIViewController, CLLocationManagerDelegate {
             UIApplication.shared.statusBarStyle = .darkContent
             self.setupAppearanceText("mainMenu.nightMode".localized())
             UserDefaults.standard.set(1, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
         }
     }
     

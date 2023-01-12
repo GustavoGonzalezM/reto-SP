@@ -84,18 +84,16 @@ class LoginViewController: UIViewController {
     }
     
     func setInitialAppearance() {
-        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
         if UserDefaults.standard.integer(forKey: "appearance") == 2 {
             self.view.overrideUserInterfaceStyle = .dark
             UIApplication.shared.statusBarStyle = .lightContent
             UserDefaults.standard.set(2, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
 
         } else if UserDefaults.standard.integer(forKey: "appearance") == 1 {
             self.view.overrideUserInterfaceStyle = .light
             UIApplication.shared.statusBarStyle = .darkContent
             UserDefaults.standard.set(1, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
+
         }
     }
 

@@ -140,7 +140,6 @@ class MenuScreenViewController: UIViewController {
     }
     
     func setInitialAppearance() {
-        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
         if UserDefaults.standard.integer(forKey: "appearance") == 2 {
             self.view.overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -149,7 +148,6 @@ class MenuScreenViewController: UIViewController {
             UIApplication.shared.statusBarStyle = .lightContent
             self.setupAppearanceText("mainMenu.dayMode".localized())
             UserDefaults.standard.set(2, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
         } else if UserDefaults.standard.integer(forKey: "appearance") == 1 {
             self.view.overrideUserInterfaceStyle = .light
@@ -159,12 +157,10 @@ class MenuScreenViewController: UIViewController {
             UIApplication.shared.statusBarStyle = .darkContent
             self.setupAppearanceText("mainMenu.nightMode".localized())
             UserDefaults.standard.set(1, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
         }
     }
     
     func setAppearance() {
-        print("APPEARANCE \(UserDefaults.standard.integer(forKey: "appearance"))")
         if UserDefaults.standard.integer(forKey: "appearance") == 1 {
             self.view.overrideUserInterfaceStyle = .dark
             self.navigationController?.navigationBar.tintColor = UIColor.white
@@ -173,7 +169,6 @@ class MenuScreenViewController: UIViewController {
             UIApplication.shared.statusBarStyle = .lightContent
             self.setupAppearanceText("mainMenu.dayMode".localized())
             UserDefaults.standard.set(2, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
             
         } else if UserDefaults.standard.integer(forKey: "appearance") == 2 {
             self.view.overrideUserInterfaceStyle = .light
@@ -183,7 +178,6 @@ class MenuScreenViewController: UIViewController {
             UIApplication.shared.statusBarStyle = .darkContent
             self.setupAppearanceText("mainMenu.nightMode".localized())
             UserDefaults.standard.set(1, forKey: "appearance")
-            print("CHANGED TO \(UserDefaults.standard.integer(forKey: "appearance"))")
         }
     }
     
